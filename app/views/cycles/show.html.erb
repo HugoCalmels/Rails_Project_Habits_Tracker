@@ -1,0 +1,25 @@
+<%= link_to "good habit", user_cycle_good_habits_path(@user.id, @cycle.title) %>
+
+<%= link_to "bad habit", user_cycle_bad_habits_path(@user.id, @cycle.title) %>
+<%= link_to "stats", user_cycle_stats_path(@user.id, @cycle.title) %>
+
+<button>dropdown:select cycle</button>
+
+<hr>
+
+<h1>Cycle : <%= @cycle.title %></h1>
+
+<br>
+
+
+<h4>please select an habit</h4>
+<%= link_to "good habit", user_cycle_good_habits_path(@user.id, @cycle.title) %>
+<%= link_to "bad habit", user_cycle_bad_habits_path(@user.id, @cycle.title) %>
+
+
+
+
+
+
+
+

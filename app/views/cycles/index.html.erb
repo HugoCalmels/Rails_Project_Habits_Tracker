@@ -1,0 +1,14 @@
+<h1> User profile page </h1>
+
+
+
+<% @cycles.each do |cycle| %>
+  <li>
+<%= link_to cycle.title, user_cycle_path(@user.id, cycle.title) %>
+</li>
+  <% end %>
+
+
+  <h4> select a cycle (daily/weekly/monthly) which will redirect you to your cycle index.
+  
+  
