@@ -1,0 +1,16 @@
+
+<h1>GoodHabits#index</h1>
+<p>Find me in app/views/good_habits/index.html.erb</p>
+
+<% @good_habits.each do |habit| %>
+  <li>
+  <%= habit.title %>
+  <%= habit.checkpoints %>
+  <%= habit.cycle.title %>
+  <%= habit.user.name %>
+  </li>
+
+  
+<% end %>
+
+<%= link_to 'New Good habit', new_user_cycle_good_habit_path(@user.id, @cycle.title) %>
