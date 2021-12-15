@@ -30,7 +30,7 @@ Cycle.create(title: "overall")
 10.times do
   gh = GoodHabit.new(
     title: Faker::Job.key_skill,
-    checkpoints: rand(0..35),
+    announced_checkpoints: rand(0..35),
     user: User.all.sample,
     cycle: Cycle.all.sample
   )
@@ -41,7 +41,7 @@ end
 10.times do
   bh = BadHabit.new(
     title: Faker::Kpop.iii_groups,
-    checkpoints: rand(0..35),
+    announced_checkpoints: rand(0..35),
     user: User.all.sample,
     cycle: Cycle.all.sample
   )

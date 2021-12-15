@@ -3,7 +3,7 @@
 <%= form_for @good_habit, url: user_cycle_good_habits_path(@user.id, @cycle.title) do |form|%>
 
   <%= form.text_field :title, placeholder: "title" %>
-  <%= form.text_field :checkpoints, placeholder: "checkpoints" %>
+  <%= form.text_field :announced_checkpoints %>
   <%= form.submit %>
 <% end %>
 
