@@ -13,3 +13,55 @@
  *= require_tree .
  *= require_self
  */
+
+.good-habit-infos {
+  border: 2px solid darkgreen;
+ }
+
+#checkpoint {
+  background: lightblue;
+}
+.special-checkboxes {
+  display: flex;
+  border: 2px solid orange;
+  justify-content: space-around;
+}
+
+.checkboxe-element {
+  border: 2px solid purple;
+
+}
+
+.checkpoint-danger {
+  border: 2px solid black;
+}
+
+.checkpoint-success {
+  border: 3px solid yellow;
+
+}
+
+.btn-submit-danger {
+  background-color: red;
+  width: 40px;
+  height: 40px;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+
+.btn-submit-success {
+  background-color: lightgreen;
+  width: 40px;
+  height: 40px;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}

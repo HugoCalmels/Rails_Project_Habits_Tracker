@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :index] do 
     resources :cycles, param: :title, only: [:show, :index] do 
       get :stats
-      resources :good_habits
+      resources :good_habits do
+        resources :checkpoints
+      end
       resources :bad_habits
     end
   end

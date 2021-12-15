@@ -1,0 +1,39 @@
+
+// CHECKPOINT ID
+/*
+let currentCheckpoint = document.querySelector(".checkpoint-data-"+docId)
+console.log(currentCheckpoint)
+*/
+
+// let childBtn = currentCheckpoint.querySelector('.checkpoint-danger .input')
+// console.log(childBtn)
+
+
+
+
+console.log(document.querySelector(".checkpoint-data-"+<%= @checkpoint.id %>+" input").classList.contains("btn-submit-danger"))
+console.log('YES')
+
+
+if (document.querySelector(".checkpoint-data-"+<%= @checkpoint.id %>+" input").classList.contains("btn-submit-danger")) {
+  document.querySelector(".checkpoint-data-"+<%= @checkpoint.id %>+" input").remove()
+  document.querySelector(".checkpoint-data-"+<%= @checkpoint.id %>).insertAdjacentHTML("afterbegin", "<%= j render 'checkpoint', checkpoint: @checkpoint %>")
+  
+} else if (document.querySelector(".checkpoint-data-"+<%= @checkpoint.id %>+" input").classList.contains("btn-submit-success")) {
+  document.querySelector(".checkpoint-data-"+<%= @checkpoint.id %>+" input").remove()
+  document.querySelector(".checkpoint-data-"+<%= @checkpoint.id %>).insertAdjacentHTML("afterbegin", "<%= j render 'checkpoint', checkpoint: @checkpoint %>")
+
+}
+
+function updateValue(e) {
+  log.textContent = e.target.value;
+}
+
+
+
+
+// changer le contenu, X, changer la couleur
+
+
+// document.getElementById("checkpoint-list")
+// .insertAdjacentHTML("beforeend", "<%= j render 'checkpoint', checkpoint: @checkpoint %>")

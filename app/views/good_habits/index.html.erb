@@ -2,15 +2,45 @@
 <h1>GoodHabits#index</h1>
 <p>Find me in app/views/good_habits/index.html.erb</p>
 
-<% @good_habits.each do |habit| %>
-  <li>
-  <%= habit.title %>
-  <%= habit.checkpoints %>
-  <%= habit.cycle.title %>
-  <%= habit.user.name %>
-  </li>
 
-  
+<% @good_habits.each do |habit| %>
+<div class="good-habit-infos">
+  <h5>Title : <%= habit.title %></h5>
+
+  <div class="special-checkboxes">
+
+    <% habit.checkpoints.sort {|a,b| a.id <=> b.id}.each do|checkpoint| %>
+
+    <div class="checkboxe-element">
+    <%= form_for habit, url: user_cycle_good_habit_checkpoint_path(@user.id, @cycle.title, habit.id, checkpoint.id), method: "PUT", remote: true do |form|%>
+
+      <div class="checkpoint-data-<%= checkpoint.id %>" id="checkpoint">
+      <%= checkpoint.id %>
+      <% if checkpoint.checked == false %>
+   
+        <%= form.submit 'X',  class: 'btn-submit-danger'%>
+
+      <% elsif checkpoint.checked == true %>
+
+      <%= form.submit 'Y',  class: 'btn-submit-success' %>
+
+      <% end %>
+      </div >
+ 
+      
+    <% end %>
+
+    </div>
+  <% end %>
+  </div>
+
+  <p> il y a <%= habit.announced_checkpoints - habit.checkpoints.where(checked: true).count %> checkpoints restants </p>
+  <p> il y a <%= habit.checkpoints.where(checked: true).count %> checkpoints successed </p>
+
+</div>
 <% end %>
 
+
 <%= link_to 'New Good habit', new_user_cycle_good_habit_path(@user.id, @cycle.title) %>
+
+<%= javascript_pack_tag 'index_gh'%>
