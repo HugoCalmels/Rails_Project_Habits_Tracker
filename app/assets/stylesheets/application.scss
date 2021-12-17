@@ -14,6 +14,9 @@
  *= require_self
  */
 
+ @import "top-navbar";
+ @import "close-alert";
+
 .good-habit-infos {
   border: 2px solid darkgreen;
  }
@@ -65,3 +68,52 @@
 	cursor: pointer;
 	outline: inherit;
 }
+
+.stats-div {
+  border: 2px solid darkblue;
+}
+
+body {
+  margin: 0;
+  padding:0 ;
+}
+
+
+
+body {
+  margin: 0;
+    height: 100%;
+}
+
+.main-wrapper {
+  margin: min(10px)!important;
+  max-width: 70%;
+  margin: 0 auto!important;
+}
+
+@media all and (min-width: 1024px) and (max-width: 1280px) {
+  .main-wrapper {
+    max-width: 75%;
+  }
+}
+@media all and (min-width: 864px) and (max-width: 1024px) {
+  .main-wrapper {
+    max-width: 80%;
+  }
+}
+@media all and (min-width: 720px) and (max-width: 864px) {
+  .main-wrapper {
+    max-width: 85%;
+  }
+}
+@media all and (min-width: 600px) and (max-width: 720px) {
+  .main-wrapper {
+    max-width: 90%;
+  }
+}
+@media all and (max-width: 600px) {
+  .main-wrapper {
+    max-width: 95%;
+  }
+}
+

@@ -1,0 +1,17 @@
+<h1>Stats#index</h1>
+<p>Find me in app/views/stats/index.html.erb</p>
+
+<h1> lets build the stats </h1>
+
+<% @good_habits.each do |habit| %>
+  
+  <% habit.stats.each do |el| %>
+    <div class="stats-div">
+    <p>titre :<%= habit.title %></p>
+    <p>date : <%= el.date %></p>
+    <p>success : <%= el.cycle_result_success %></p>
+    <p>failed : <%= el.cycle_result_failed %></p>
+    </div>
+    <% end %>
+ 
+<% end %>

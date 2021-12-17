@@ -1,7 +1,12 @@
 
 <h1>GoodHabits#index</h1>
 <p>Find me in app/views/good_habits/index.html.erb</p>
+<%= @user.id %><%= @cycle.title %>
+<%= link_to 'test', user_cycle_stats_path(@user.id, @cycle.title) %>
 
+<%= form_for @cycle, url: user_cycle_reset_path(@user.id, @cycle.title), method: 'GET',remote: true do |form|%>
+<%= form.submit 'tester',  class: 'btn-test' %>
+<% end %>
 
 <% @good_habits.each do |habit| %>
 <div class="good-habit-infos">

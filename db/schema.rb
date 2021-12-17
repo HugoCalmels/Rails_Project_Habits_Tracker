@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_14_171909) do
+ActiveRecord::Schema.define(version: 2021_12_15_170539) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,20 @@ ActiveRecord::Schema.define(version: 2021_12_14_171909) do
     t.index ["user_id"], name: "index_good_habits_on_user_id"
   end
 
+  create_table "stats", force: :cascade do |t|
+    t.date "date"
+    t.integer "cycle_result_success"
+    t.integer "cycle_result_failed"
+    t.integer "total_result_success"
+    t.integer "total_result_failed"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "good_habit_id"
+    t.bigint "bad_habit_id"
+    t.index ["bad_habit_id"], name: "index_stats_on_bad_habit_id"
+    t.index ["good_habit_id"], name: "index_stats_on_good_habit_id"
+  end
+
   create_table "successes", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -90,4 +104,6 @@ ActiveRecord::Schema.define(version: 2021_12_14_171909) do
   add_foreign_key "checkpoints", "good_habits"
   add_foreign_key "good_habits", "cycles"
   add_foreign_key "good_habits", "users"
+  add_foreign_key "stats", "bad_habits"
+  add_foreign_key "stats", "good_habits"
 end
