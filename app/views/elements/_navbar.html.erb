@@ -1,0 +1,44 @@
+<br />
+<br />
+<div class="navbar-wrapper">
+<nav class="navbar-custom">
+
+<%= link_to "Get started !", root_path, class: 'navbar-title'%>
+
+  <div class="navbar-menu">
+  <div class="navbar-left-menu">
+  <%= link_to 'How it works', how_it_works_path, class: 'navbar-link' %>
+  <%= link_to 'About', about_path, class: 'navbar-link' %>
+  </div>
+  <div class="navbar-right-menu">
+    <% if user_signed_in? %>
+      <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'navbar-link' %> 
+    <% else %>
+      <%= link_to 'Login', new_user_session_path, class: 'navbar-link' %> 
+    <% end %>
+  </div>
+  </div>
+  <div class="hamburger">
+    <%= render partial: "elements/hamburger-menu.html.erb" %>
+  </div>
+</nav>
+<div class="list-hamburger">
+    <ul>
+    <li><a class="bar"> How it works</a></li>
+    <li><a class="bar"> About</a></li>
+      <% if user_signed_in? %>
+        <li><%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'bar' %> </li>
+      <% else %>
+      <li><%= link_to 'Login', new_user_session_path, class: 'bar' %> </li>
+      <% end %>
+    </ul>
+    </div>
+    </div>
+
+</nav>
+
+<%= javascript_pack_tag 'top-navbar'%>
+
+
+
+

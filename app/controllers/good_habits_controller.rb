@@ -56,6 +56,8 @@ class GoodHabitsController < ApplicationController
   def destroy
   end
 
+ 
+
   private
 
   def good_habit_params
