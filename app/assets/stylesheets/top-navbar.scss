@@ -22,6 +22,7 @@
   text-decoration: underline;
   font-weight: bold;
   color: black;
+  margin-left: 10px;
 }
 .navbar-custom .navbar-title:hover{
   text-decoration: none;
@@ -35,7 +36,9 @@
 .list-hamburger {
   background-color: lightgreen;
   display: none;
-  float: right;
+  right: 0;
+  position: absolute;
+
 }
 .list-hamburger ul {
   list-style-type: none;

@@ -1,9 +1,34 @@
 <h1>ABout page</h1>
 
 <div class="step">
-
+  <div class="step-grid-item-1">
+  <%= render partial: "elements/schedule.html.erb" %>
+  </div>
+  <div class="step-grid-item-2">
+  <h4>What is an Habit Tracker ?</h4>
+  <p>As the name says it will track your habits, the goal is to assist your habits management.</p>
+  <p>At the end you'll be rewarded with fantastic statistics about your habits achievements</p>
+  </div>
+</div>
+<div class="step">
+<div class="step-grid-item-1">
+  <div class="video-link">
+  <iframe src='https://www.youtube.com/embed/v=PZ7lDrwYdZc&t=1357s&t=1357s?rel=0&autoplay=<%= params[:autoplay] || 0 %>' frameborder='0' allowfullscreen></iframe>
+  </div>
+  </div>
+  <div class="step-grid-item-2">
+  <h4>Why an Habit Tracker ?</h4>
+  <p>While I was initially going for a To-do List, I found out a video about Habits, this is where it started</p>
+  <p>Searched for good PC habit trackers applications and couldn't find one that fited me.</p>
+  <p>Also it was a bit challenging for me to do, and as I often say "no challenge = no fun".</p>
+  <p>The original idea comes from James C.Clear, here is the link to <a href="https://jamesclear.com/atomic-habits">"Atomic Habits by James Clear"</a></p>
+    </div>
 </div>
 
 <div class="step">
+  <h4>About me</h4>
+</div>
 
+<div class="step">
+  <h4>About you</h4>
 </div>
