@@ -1,0 +1,17 @@
+<nav class="middle-navbar"> 
+    <div class="middle-navbar-grid">
+      <%= link_to 'stats', user_cycle_stats_path(@user.id, @cycle.title) %>
+    </div>
+    <div class="middle-navbar-grid">
+      <%= link_to 'New Good habit', new_user_cycle_good_habit_path(@user.id, @cycle.title) %>
+    </div>
+    <div class="middle-navbar-grid">
+      <%= form_for @cycle, url: user_cycle_reset_path(@user.id, @cycle.title), method: 'GET',remote: true do |form|%>
+      <%= form.submit 'simulate',  class: 'btn-test' %>
+      <% end %>
+    </div>
+    <div class="middle-navbar-grid">
+      <a>other habit(todo)</a>
+    </div>
+  </div>
+</nav>

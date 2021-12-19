@@ -1,12 +1,8 @@
+<%= render partial: "elements/header-auth.html.erb" %>
 
-<h1>GoodHabits#index</h1>
-<p>Find me in app/views/good_habits/index.html.erb</p>
-<%= @user.id %><%= @cycle.title %>
-<%= link_to 'test', user_cycle_stats_path(@user.id, @cycle.title) %>
+<h2 class="page-header"><%=@cycle.title.capitalize%> good habits</h2>
 
-<%= form_for @cycle, url: user_cycle_reset_path(@user.id, @cycle.title), method: 'GET',remote: true do |form|%>
-<%= form.submit 'tester',  class: 'btn-test' %>
-<% end %>
+<h3>test animated modal here</h3>
 
 <% @good_habits.each do |habit| %>
 <div class="good-habit-infos">
@@ -45,7 +41,5 @@
 </div>
 <% end %>
 
-
-<%= link_to 'New Good habit', new_user_cycle_good_habit_path(@user.id, @cycle.title) %>
 
 <%= javascript_pack_tag 'index_gh'%>
