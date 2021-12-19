@@ -1,0 +1,17 @@
+.middle-navbar {
+  border-bottom: 3px solid rgb(67, 4, 70);
+  height: 80px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  text-align: center;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+}
+.middle-navbar-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

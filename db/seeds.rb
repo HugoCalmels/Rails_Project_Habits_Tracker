@@ -25,7 +25,7 @@ end
 Cycle.create(title: "daily")
 Cycle.create(title: "weekly")
 Cycle.create(title: "monthly")
-Cycle.create(title: "overall")
+
 
 10.times do
   gh = GoodHabit.new(
