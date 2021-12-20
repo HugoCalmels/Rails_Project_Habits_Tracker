@@ -1,0 +1,3 @@
+<p>Y : <%= @checkpoint.good_habit.checkpoints.where(checked: true).count %></p>
+<p>X : <%= @checkpoint.good_habit.announced_checkpoints - @checkpoint.good_habit.checkpoints.where(checked: true).count %></p>
+
