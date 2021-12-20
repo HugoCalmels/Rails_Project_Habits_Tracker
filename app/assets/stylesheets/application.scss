@@ -19,61 +19,7 @@
  @import "good_habit";
  @import "middle-navbar";
 
-.good-habit-infos {
-  border: 2px solid darkgreen;
- }
 
-#checkpoint {
-  background: lightblue;
-}
-.special-checkboxes {
-  display: flex;
-  border: 2px solid orange;
-  justify-content: space-around;
-}
-
-.checkboxe-element {
-  border: 2px solid purple;
-
-}
-
-.checkpoint-danger {
-  border: 2px solid black;
-}
-
-.checkpoint-success {
-  border: 3px solid yellow;
-
-}
-
-.btn-submit-danger {
-  background-color: red;
-  width: 40px;
-  height: 40px;
-	color: inherit;
-	border: none;
-	padding: 0;
-	font: inherit;
-	cursor: pointer;
-	outline: inherit;
-}
-
-
-.btn-submit-success {
-  background-color: lightgreen;
-  width: 40px;
-  height: 40px;
-	color: inherit;
-	border: none;
-	padding: 0;
-	font: inherit;
-	cursor: pointer;
-	outline: inherit;
-}
-
-.stats-div {
-  border: 2px solid darkblue;
-}
 
 
 html {
@@ -257,4 +203,55 @@ body {
   vertical-align: middle;
   text-align: center;
 
+}
+
+.habits-grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: auto;
+  }
+
+}
+
+.habit-grid{
+  background-color: white !important;
+  border: 3px solid rgb(67, 4, 70);
+  border-radius: 1rem;
+  color: black;
+}
+
+.habit-grid:hover {
+  transition: 0.3s;
+  border: 6px solid rgb(67, 4, 70);
+  background-color: none;
+  background-image: linear-gradient(rgb(234, 229, 98), rgb(240, 232, 0));
+}
+
+
+
+.habit-wrapper {
+  display: grid;
+  grid-template-columns: 8fr 1fr;
+}
+
+
+
+
+
+.habit-left-col{
+  margin-left: 30px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.habit-title {
+  font-size: 20px;
+  font-weight: bold;
 }
