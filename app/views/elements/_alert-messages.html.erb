@@ -1,0 +1,25 @@
+
+  <% flash.each do |key, value| %>
+  <div class="alert-messages">
+
+    <% if key == "notice" %>
+      <div class="alert-<%= key %>">
+        <%= value %>
+        &nbsp;<span class="span-close-alert">&times;</span>
+      </div>
+    <% elsif key == "alert" %>
+      <div class="alert-<%= key %>">
+        <%= value %>
+        &nbsp;<span class="span-close-alert">&times;</span>
+      </div>
+    <% else %>
+      <div class="alert-<%= key %>">
+        <%= value %>
+        &nbsp;<span class="span-close-alert">&times;</span>
+      </div>
+    <% end %>
+  </div>
+  <%= javascript_pack_tag 'alert-messages'%>
+  <% end %>
+
+

@@ -1,0 +1,22 @@
+<div class="header-not-auth">
+<h1 class="page-main-header">Habits Tracker</h1>
+</div>
+<div class="cycles-wrapper">
+<h2 class="page-header">Select a Cycle</h2>
+
+<div class="user-container">
+
+<div class="user-cycle-selection">
+<% @cycles.each do |cycle| %>
+  <ul>
+  <li>
+<%= link_to cycle.title, user_cycle_path(@user.id, cycle.title), class:"cycles-list-a" %>
+</li>
+</ul>
+  <% end %>
+  </div>
+
+</div>
+
+</div>
+  

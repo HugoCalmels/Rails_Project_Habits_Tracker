@@ -1,0 +1,10 @@
+
+<% if checkpoint.checked == false %>
+  
+<input type="submit" name="commit" value="X" class="btn-submit-danger" data-disable-with="X">
+   
+      <% elsif checkpoint.checked == true %>
+
+      <input type="submit" name="commit" value="Y" class="btn-submit-success" data-disable-with="Y">
+   
+      <% end %>

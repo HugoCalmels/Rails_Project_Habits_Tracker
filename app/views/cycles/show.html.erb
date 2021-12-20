@@ -1,0 +1,22 @@
+
+<div class="header-not-auth">
+<h1 class="page-main-header">Select an habit</h1>
+</div>
+<h2 class="page-header">Cycle : <%=@cycle.title%></h2>
+
+<div class="user-container">
+  <div class="user-habit-selection">
+    <%= link_to "good habit", user_cycle_good_habits_path(@user.id, @cycle.title), class:'cycles-list-a' %>
+    <%= link_to "bad habit", user_cycle_bad_habits_path(@user.id, @cycle.title), class:'cycles-list-a'  %>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+

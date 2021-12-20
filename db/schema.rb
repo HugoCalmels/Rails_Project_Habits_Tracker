@@ -10,10 +10,68 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_09_043202) do
+ActiveRecord::Schema.define(version: 2021_12_15_170539) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bad_habits", force: :cascade do |t|
+    t.string "title"
+    t.integer "announced_checkpoints"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.bigint "cycle_id"
+    t.index ["cycle_id"], name: "index_bad_habits_on_cycle_id"
+    t.index ["user_id"], name: "index_bad_habits_on_user_id"
+  end
+
+  create_table "checkpoints", force: :cascade do |t|
+    t.bigint "good_habit_id"
+    t.bigint "bad_habit_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.boolean "checked"
+    t.index ["bad_habit_id"], name: "index_checkpoints_on_bad_habit_id"
+    t.index ["good_habit_id"], name: "index_checkpoints_on_good_habit_id"
+  end
+
+  create_table "cycles", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "good_habits", force: :cascade do |t|
+    t.string "title"
+    t.integer "announced_checkpoints"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.bigint "cycle_id"
+    t.integer "successed_checkpoints"
+    t.index ["cycle_id"], name: "index_good_habits_on_cycle_id"
+    t.index ["user_id"], name: "index_good_habits_on_user_id"
+  end
+
+  create_table "stats", force: :cascade do |t|
+    t.date "date"
+    t.integer "cycle_result_success"
+    t.integer "cycle_result_failed"
+    t.integer "total_result_success"
+    t.integer "total_result_failed"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "good_habit_id"
+    t.bigint "bad_habit_id"
+    t.index ["bad_habit_id"], name: "index_stats_on_bad_habit_id"
+    t.index ["good_habit_id"], name: "index_stats_on_good_habit_id"
+  end
+
+  create_table "successes", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -40,4 +98,12 @@ ActiveRecord::Schema.define(version: 2021_12_09_043202) do
     t.index ["reset_password_token"], name: "index_views_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bad_habits", "cycles"
+  add_foreign_key "bad_habits", "users"
+  add_foreign_key "checkpoints", "bad_habits"
+  add_foreign_key "checkpoints", "good_habits"
+  add_foreign_key "good_habits", "cycles"
+  add_foreign_key "good_habits", "users"
+  add_foreign_key "stats", "bad_habits"
+  add_foreign_key "stats", "good_habits"
 end
