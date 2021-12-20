@@ -1,0 +1,181 @@
+.page {
+  margin: min(10px)!important;
+  max-width: 70%;
+  margin: 0 auto!important;
+  
+}
+
+.modal {
+  background-image: linear-gradient(rgb(234, 229, 98), rgb(240, 232, 0));
+  position: fixed; // when the user scrolls down the page, it stays fixed
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0); // scale 0 makes the item invisible
+  transition: 200ms ease-in-out;
+  border: 3px solid rgb(67, 4, 70);
+  border-radius: 10px;
+  z-index: 10;
+  max-width: 100%;
+  
+}
+
+.modal.active { // 2nd class from the same div, good to custom
+  transform: translate(-50%, -50%) scale(1);
+
+}
+
+.modal-menu {
+  margin-top: 5px;
+  display: flex;
+}
+
+.modal-header {
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid black;
+}
+.modal-header {
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 3px solid rgb(67, 4, 70);
+}
+.modal-header h5 {
+  margin: 0;
+}
+.modal-header-title h5{
+  font-size:20px;
+  font-weight: bold;
+}
+
+.modal-header .close-btn {
+  background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+  margin-left: 10px;
+
+}
+
+.modal-body {
+  padding: 10px 15px;
+}
+
+#overlay {
+  position: fixed;
+  opacity: 0; // makes the item invisible
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  transition: 200ms ease-in-out;
+}
+
+#overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+
+
+
+
+.good-habit-infos {
+  border: 2px solid darkgreen;
+  margin: 10px;
+ }
+
+#checkpoint {
+
+}
+.special-checkboxes {
+  display: grid;
+  border: 2px solid orange;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 10px;
+  padding: 10px;
+  @media (max-width: 768px) {
+
+  }
+}
+
+.checkboxe-element {
+
+}
+
+.checkpoint-danger {
+  border: 2px solid black;
+}
+
+.checkpoint-success {
+  border: 3px solid yellow;
+
+}
+
+.btn-submit-danger {
+  background:white ;
+	color: inherit;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+  padding: 5px;
+  border: 5px solid rgb(238,45,40);
+  border-radius: 5px;
+}
+.btn-submit-danger:hover {
+  border: 5px solid rgba(67, 4, 70, 0.8);
+
+}
+
+
+
+.btn-submit-success {
+  background:white;
+	color: inherit;
+  padding: 5px;
+  border: 5px solid rgb(1,193,70);
+  border-radius: 5px;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+.btn-submit-success:hover {
+  border: 5px solid rgba(67, 4, 70, 0.8);
+
+}
+
+
+
+.stats-div {
+  border: 2px solid darkblue;
+}
+
+.custom-model-button {
+  all: unset;
+  color: black;
+  -webkit-text-fill-color: black;
+  cursor: pointer;
+  width: 100%;
+}
+
+.edit {
+  width: 17px;
+}
+.delete {
+  width: 15px;
+  margin-left: 10px;
+}
+.close-svg {
+  width: 15px;
+}
+
+.cross {
+  width: 15px;
+}
