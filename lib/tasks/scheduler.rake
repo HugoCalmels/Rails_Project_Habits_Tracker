@@ -20,11 +20,16 @@ namespace :scheduled_tasks do
             cycle_result_failed: cycle_failed_total,
             good_habit_id: habit.id
           )
+          habit.announced_checkpoints.times do
+            habit.checkpoints.create(good_habit_id: habit.id)
+          end
       end
+     
     end
     puts "%%%%%%%%%%%%%%%%"
     puts "Daily cycle updated"
     puts "%%%%%%%%%%%%%%%%"
+  
 
     if (Date.today.strftime("%A") == "Monday")
       User.all.each do |user|
@@ -46,12 +51,15 @@ namespace :scheduled_tasks do
               cycle_result_failed: cycle_failed_total,
               good_habit_id: habit.id
             )
+            habit.announced_checkpoints.times do
+              habit.checkpoints.create(good_habit_id: habit.id)
+            end
         end
       end
       puts "%%%%%%%%%%%%%%%%"
       puts "Weekly cycle updated"
       puts "%%%%%%%%%%%%%%%%"
-
+  
     end
 
 
@@ -75,16 +83,19 @@ namespace :scheduled_tasks do
               cycle_result_failed: cycle_failed_total,
               good_habit_id: habit.id
             )
+            habit.announced_checkpoints.times do
+              habit.checkpoints.create(good_habit_id: habit.id)
+            end
         end
       end
       puts "%%%%%%%%%%%%%%%%"
       puts "Monthly cycle updated"
       puts "%%%%%%%%%%%%%%%%"
-      
     end
 
     puts "%%%%%%%%%%%%%%%%"
     puts "Schedule end"
     puts "%%%%%%%%%%%%%%%%"
+  
   end
 end
