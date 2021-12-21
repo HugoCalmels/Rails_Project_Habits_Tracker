@@ -1,6 +1,6 @@
 namespace :scheduled_tasks do
   desc "daily checkpoints reset + creating stats"
-  task update1: :environment do
+  task update: :environment do
     User.all.each do |user|
       user.good_habits.where(cycle_id: 1).each do |habit|
         cycle_success_total = 0
@@ -26,7 +26,7 @@ namespace :scheduled_tasks do
     puts "Daily cycle updated"
     puts "%%%%%%%%%%%%%%%%"
 
-    if (Date.today.strftime("%A") == "Monday"){
+    if (Date.today.strftime("%A") == "Monday")
       User.all.each do |user|
         user.good_habits.where(cycle_id: 2).each do |habit|
           cycle_success_total = 0
@@ -52,11 +52,10 @@ namespace :scheduled_tasks do
       puts "Weekly cycle updated"
       puts "%%%%%%%%%%%%%%%%"
 
-    }
+    end
 
 
-
-    if (Date.today.strftime("%C") == "1"){
+    if (Date.today.strftime("%C") == "1")
       User.all.each do |user|
         user.good_habits.where(cycle_id: 3).each do |habit|
           cycle_success_total = 0
@@ -82,8 +81,10 @@ namespace :scheduled_tasks do
       puts "Monthly cycle updated"
       puts "%%%%%%%%%%%%%%%%"
       
-    }
+    end
 
-
+    puts "%%%%%%%%%%%%%%%%"
+    puts "Schedule end"
+    puts "%%%%%%%%%%%%%%%%"
   end
 end
