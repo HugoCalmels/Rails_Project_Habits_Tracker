@@ -37,3 +37,4 @@ overlay.addEventListener('click', () => {
     closeModal(modal)
   })
 })
+
