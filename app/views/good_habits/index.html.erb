@@ -1,26 +1,30 @@
 <%= render partial: "elements/header-auth.html.erb" %>
 
+
 <div class="page">
+<div class="div-page-header">
 <h2 class="page-header"><%=@cycle.title.capitalize%> good habits</h2>
+<p>Create and open one habit to complete your <%=@cycle.title%> tasks</p>
+</div>
 
-<div class="habits-grid-container">
+  <div class="habits-grid-container">
 
-<% @good_habits.each do |habit| %>
-<div class="habit-grid" data-hover-target="#modal<%= habit.id%>">
+  <% @good_habits.each do |habit| %>
 
-<div class="modal" id="modal<%= habit.id%>"> 
-  <div class="modal-header">
-    <div class="modal-header-title"> 
-    <h5><%= habit.title.capitalize %></h5>
-    </div>
-    <div class="modal-menu">
-    <%= render partial: "elements/edit.html.erb" %>
-    <%= render partial: "elements/delete.html.erb" %>
-    <button data-close-button class="close-btn"><%= render partial: "elements/close.html.erb" %></button>
-    </div>
-  </div>
-  <div class="modal-body">
-  <div class="special-checkboxes">
+    <div class="habit-grid" data-hover-target="#modal<%= habit.id%>">
+      <div class="modal" id="modal<%= habit.id%>"> 
+        <div class="modal-header">
+          <div class="modal-header-title"> 
+            <h5><%= habit.title.capitalize %></h5>
+          </div>
+        <div class="modal-menu">
+          <%= render partial: "elements/edit.html.erb" %>
+          <%= render partial: "elements/delete.html.erb" %>
+          <button data-close-button class="close-btn"><%= render partial: "elements/close.html.erb" %></button>
+        </div>
+      </div>
+      <div class="modal-body">
+      <div class="special-checkboxes">
     <% habit.checkpoints.sort {|a,b| a.id <=> b.id}.each do|checkpoint| %>
     <div class="checkboxe-element">
       <%= form_for habit, url: user_cycle_good_habit_checkpoint_path(@user.id, @cycle.title, habit.id, checkpoint.id), method: "PUT", remote: true do |form|%>
@@ -41,22 +45,117 @@
 <button  class="custom-model-button" data-modal-target="#modal<%= habit.id%>">
 
   <div class="habit-wrapper">
-    <div class="habit-left-col">
-      <div class="habit-title">
-      <%= habit.title.capitalize %>
-      </div>
-      <div class="habit-days">
-      since 92 days
-      </div>
+    <div class="habit-header">
+    
+      <h4><%= habit.title.capitalize %></h4>
+    
     </div>
-    <div class="habit-rigth-col-<%= habit.id%>">
-        <p>Y : <%= habit.checkpoints.where(checked: true).count %></p>
-        <p>X : <%= habit.announced_checkpoints - habit.checkpoints.where(checked: true).count %></p>
+    <div class="habit-days">
+    <% created_at = Date.parse(habit.created_at.to_s) %>
+    <% date_now = Date.current.to_date %>
+    <% difference = date_now.mjd - created_at.mjd %>
+    since <%= difference %>
+    <% if difference == 0 %>
+      day
+    <% else %>
+      days
+    <% end %>
+    </div>
+
+    <% success = habit.checkpoints.where(checked: true).count.to_f %>
+  <% total = habit.announced_checkpoints.to_i %>
+  <% percentage = ((success/total)*100).round(2) %>
+  <% left = total - success%>
+    <div class="infos-wrapper-<%= habit.id%>" id="infos-wrapper">
+    <div class="achievements-infos-<%= habit.id%>" id="achievements-infos">
+    <p class="achievement-paragraph"><%= left.to_i %> checkpoints left </p>
+    <p class="achievement-paragraph">current achivement success : <%= percentage %>% </p>
+    </div>
+    <div class="habit-rigth-col-<%= habit.id%>-grid" id="achievements-grid-wrapper">
+
+
+<% if percentage == 0 && percentage < 16.67  %>
+<div class="achievement-grid red"></div>
+<div class="achievement-grid gray"></div>
+<div class="achievement-grid gray"></div>
+<div class="achievement-grid gray"></div>
+<div class="achievement-grid gray"></div>
+<div class="achievement-grid gray"></div>
+<div class="achievement-grid gray"></div>
+<div class="achievement-grid gray"></div>
+<% elsif percentage >= 0 && percentage < 16.67 %>
+<div class="achievement-grid orange"></div>
+<div class="achievement-grid orange"></div>
+<div class="achievement-grid gray"></div>
+<div class="achievement-grid gray"></div>
+<div class="achievement-grid gray"></div>
+<div class="achievement-grid gray"></div>
+<div class="achievement-grid gray"></div>
+<div class="achievement-grid gray"></div>
+<% elsif percentage >= 16.67 && percentage < 33.33 %>
+  <div class="achievement-grid orange"></div>
+  <div class="achievement-grid orange"></div>
+  <div class="achievement-grid orange"></div>
+  <div class="achievement-grid gray"></div>
+  <div class="achievement-grid gray"></div>
+  <div class="achievement-grid gray"></div>
+  <div class="achievement-grid gray"></div>
+  <div class="achievement-grid gray"></div>
+<% elsif percentage >= 33.33 && percentage < 50 %>
+<div class="achievement-grid green1"></div>
+  <div class="achievement-grid green1"></div>
+  <div class="achievement-grid green1"></div>
+  <div class="achievement-grid green1"></div>
+  <div class="achievement-grid gray"></div>
+  <div class="achievement-grid gray"></div>
+  <div class="achievement-grid gray"></div>
+  <div class="achievement-grid gray"></div>
+<% elsif percentage >= 50 && percentage < 66.67 %>
+<div class="achievement-grid green1"></div>
+  <div class="achievement-grid green1"></div>
+  <div class="achievement-grid green1"></div>
+  <div class="achievement-grid green1"></div>
+  <div class="achievement-grid green1"></div>
+  <div class="achievement-grid gray"></div>
+  <div class="achievement-grid gray"></div>
+  <div class="achievement-grid gray"></div>
+<% elsif percentage >= 66.67 && percentage < 83.33 %>
+<div class="achievement-grid green2"></div>
+  <div class="achievement-grid green2"></div>
+  <div class="achievement-grid green2"></div>
+  <div class="achievement-grid green2"></div>
+  <div class="achievement-grid green2"></div>
+  <div class="achievement-grid green2"></div>
+  <div class="achievement-grid gray"></div>
+  <div class="achievement-grid gray"></div>
+<% elsif percentage >= 83.33 && percentage < 100 %>
+<div class="achievement-grid green2"></div>
+  <div class="achievement-grid green2"></div>
+  <div class="achievement-grid green2"></div>
+  <div class="achievement-grid green2"></div>
+  <div class="achievement-grid green2"></div>
+  <div class="achievement-grid green2"></div>
+  <div class="achievement-grid green2"></div>
+  <div class="achievement-grid gray"></div>
+<% elsif percentage == 100.0 %>
+<div class="achievement-grid green3"></div>
+  <div class="achievement-grid green3"></div>
+  <div class="achievement-grid green3"></div>
+  <div class="achievement-grid green3"></div>
+  <div class="achievement-grid green3"></div>
+  <div class="achievement-grid green3"></div>
+  <div class="achievement-grid green3"></div>
+  <div class="achievement-grid green3"></div>
+  </div>
+<% end %>
     </div>
   </div>
-
+ 
   </button>
+
 </div>
+
+
 <% end %>
 
 
@@ -64,9 +163,6 @@
 <div id="overlay"></div>
 </div>
 
-<i class="fas fa-times"></i>
-<i class="fas fa-times"></i>
-<i class="fas fa-times"></i>
-<i class="fas fa-times"></i>
-<i class="fas fa-times"></i>
+
+
 <%= javascript_pack_tag 'index_gh'%>

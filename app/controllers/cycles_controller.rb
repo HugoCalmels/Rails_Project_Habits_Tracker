@@ -31,7 +31,8 @@ class CyclesController < ApplicationController
       @cycle = Cycle.find_by(title: params[:cycle_title])
       @user = User.find(params[:user_id])
       @good_habits = GoodHabit.where(cycle_id: @cycle.id, user_id: @user.id)
-      
+
+
 
       puts "MMMMMMMMMM"
       puts "we starting to code here !"
@@ -63,7 +64,7 @@ class CyclesController < ApplicationController
         @stat = Stat.new(
           cycle_result_failed: cycle_failed_total,
           cycle_result_success: cycle_success_total,
-          good_habit_id: habit.id,
+          calendar: habit.calendar,
           date: DateTime.current.to_date
         )
         if @stat.save

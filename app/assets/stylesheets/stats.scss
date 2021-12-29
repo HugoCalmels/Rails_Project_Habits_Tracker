@@ -1,0 +1,132 @@
+.calendar-container {
+  
+
+  display: grid;
+  grid-template-columns: 1fr 32fr;
+
+  grid-template-areas:
+    'sidebar content'
+    'sidebar content'
+}
+
+
+
+.calendar-leftsidebar {
+  grid-area: sidebar;
+  display: grid;
+  grid-template-rows: repeat(8, minmax(0, 1fr));
+}
+
+
+.calendar-body {
+  grid-area: content;
+  display: grid;
+  grid-template-columns: repeat(53, minmax(0, 1fr));
+  padding: 5px;
+  gap: 5px;
+
+}
+
+.calendar-week {
+  display: grid;
+  grid-template-rows: repeat(8, minmax(0, 1fr));
+  
+  gap: 5px;
+}
+
+.calendar-day {
+  background-color: rgb(160, 160, 160);
+  border-radius: 2px;
+  height: 13px;
+  width: 13px;
+}
+
+.calendar-week.special {
+  background-color: red;
+}
+
+.calendar-day.red {
+  background-color: red;
+  position: relative;
+}
+.calendar-day.orange {
+  background-color: #F8A544;
+  position: relative;
+}
+.calendar-day.green1 {
+  background-color: #98d142;
+  position: relative;
+}
+.calendar-day.green2 {
+  background-color: #74e049;
+  position: relative;
+}
+.calendar-day.green3 {
+  background-color: rgb(24,196,68);
+  position: relative;
+}
+
+.calendar-body.header {
+  background-color: green;
+}
+
+.calendar-body.header.super {
+  background-color: green;
+}
+
+.month-name {
+  height: 13px;
+  width: 13px;
+  margin-top: -5px;
+}
+.month-blank {
+  height: 13px;
+  width: 13px;
+}
+
+.day-invis {
+  pointer-events:none;
+  display: block;
+
+  width: 150px;
+  border-radius: 5px;
+  font-size: 14px;
+  text-align: center;
+  margin-top: -5px;
+  margin-left: -75px;
+  font-weight: 900;
+  bottom: 0;
+  color: lightgrey;
+  top: 0;
+  background-color: hsla(50, 33%, 25%, .50);
+  opacity: 0;
+  border: 2px solid rgb(67, 4, 70);
+}
+
+
+.calendars-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(auto, minmax(0, 10fr));
+  margin: min(10px)!important;
+  max-width: 70%;
+  margin: 0 auto!important;
+}
+
+.calendar-item {
+  margin-bottom: 30px;
+  background-image: linear-gradient(rgb(231, 231, 231), rgb(214, 214, 214));
+  box-shadow: 4px 4px 8px 4px rgba(67, 4, 70, 0.534);
+  border: 3px solid rgb(67, 4, 70);
+  border-radius: 20px;
+  padding: 10px;
+}
+.calendar-item h4{
+  margin-bottom: 5px;
+  margin-top: 0;
+
+}
+
+#week-invis {
+  width: 300px;
+}

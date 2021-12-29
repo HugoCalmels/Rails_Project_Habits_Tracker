@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_15_170539) do
+ActiveRecord::Schema.define(version: 2021_12_22_213529) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,14 @@ ActiveRecord::Schema.define(version: 2021_12_15_170539) do
     t.bigint "cycle_id"
     t.index ["cycle_id"], name: "index_bad_habits_on_cycle_id"
     t.index ["user_id"], name: "index_bad_habits_on_user_id"
+  end
+
+  create_table "calendars", force: :cascade do |t|
+    t.date "date_range"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "good_habit_id"
+    t.index ["good_habit_id"], name: "index_calendars_on_good_habit_id"
   end
 
   create_table "checkpoints", force: :cascade do |t|
@@ -64,7 +72,9 @@ ActiveRecord::Schema.define(version: 2021_12_15_170539) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "good_habit_id"
     t.bigint "bad_habit_id"
+    t.bigint "calendar_id"
     t.index ["bad_habit_id"], name: "index_stats_on_bad_habit_id"
+    t.index ["calendar_id"], name: "index_stats_on_calendar_id"
     t.index ["good_habit_id"], name: "index_stats_on_good_habit_id"
   end
 
@@ -100,10 +110,12 @@ ActiveRecord::Schema.define(version: 2021_12_15_170539) do
 
   add_foreign_key "bad_habits", "cycles"
   add_foreign_key "bad_habits", "users"
+  add_foreign_key "calendars", "good_habits"
   add_foreign_key "checkpoints", "bad_habits"
   add_foreign_key "checkpoints", "good_habits"
   add_foreign_key "good_habits", "cycles"
   add_foreign_key "good_habits", "users"
   add_foreign_key "stats", "bad_habits"
+  add_foreign_key "stats", "calendars"
   add_foreign_key "stats", "good_habits"
 end

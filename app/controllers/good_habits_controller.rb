@@ -27,6 +27,8 @@ class GoodHabitsController < ApplicationController
     @good_habit.user = @user
     @good_habit.cycle = @cycle
     if @good_habit.save!
+      @calendar = Calendar.create
+      @good_habit.calendar = @calendar
       @good_habit.announced_checkpoints.times do
         @good_habit.checkpoints.create(good_habit_id: @good_habit.id)
       end

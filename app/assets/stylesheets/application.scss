@@ -18,6 +18,7 @@
  @import "close-alert";
  @import "good_habit";
  @import "middle-navbar";
+ @import "stats";
 
 
 
@@ -209,7 +210,8 @@ body {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 2rem;
-  padding: 2rem;
+
+  
 
   @media (max-width: 768px) {
     grid-template-columns: auto;
@@ -218,40 +220,119 @@ body {
 }
 
 .habit-grid{
-  background-color: white !important;
   border: 3px solid rgb(67, 4, 70);
   border-radius: 1rem;
   color: black;
+  background-image: linear-gradient(rgb(231, 231, 231), rgb(214, 214, 214));
+  box-shadow: 4px 4px 8px 4px rgba(67, 4, 70, 0.534);
 }
 
 .habit-grid:hover {
-  transition: 0.3s;
-  border: 6px solid rgb(67, 4, 70);
-  background-color: none;
-  background-image: linear-gradient(rgb(234, 229, 98), rgb(240, 232, 0));
+  transition: 0.2s;
+  border: 5px solid rgb(67, 4, 70);
+
+
 }
 
 
 
 .habit-wrapper {
   display: grid;
-  grid-template-columns: 8fr 1fr;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1fr 2fr;
+  grid-template-areas: 
+  "header header"
 }
 
 
 
 
 
-.habit-left-col{
-  margin-left: 30px;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  margin-top: 15px;
-  margin-bottom: 15px;
-}
-
-.habit-title {
+.habit-header {
+  grid-area: header;
   font-size: 20px;
   font-weight: bold;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 3px solid rgb(67, 4, 70);
+}
+.habit-header h4{
+  margin: 0;
+  margin-right: 30px;
+  margin-left: 15px;
+  margin-bottom: 5px;
+}
+
+
+
+
+#achievements-grid-wrapper {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 40px));
+  margin-right: 15px;
+  margin-bottom: 15px;
+  justify-items: end;
+  justify-content: end;
+}
+
+.achievement-grid {
+  margin-left: 0!important;
+  width: 30px;
+  height: 40px;
+  border-radius: 10px;
+}
+
+.achievement-grid.green3 {
+  background-color: rgb(24,196,68);
+}
+.achievement-grid.green2 {
+  background-color: #74e049;
+}
+.achievement-grid.green1 {
+  background-color: #98d142;
+}
+.achievement-grid.orange {
+  background-color: #F8A544;
+}
+.achievement-grid.gray {
+  background-color: #BBBEBB;
+}
+.achievement-grid.red {
+  background-color: rgb(240,44,44);
+}
+
+.achievement-grid.yellow {
+  background-color: rgb(240, 232, 0);
+}
+
+#infos-wrapper {
+  display: grid;
+  grid-template-columns: repeat(1, auto);
+  grid-template-rows: 60px 40px;
+}
+
+#achievements-infos {
+  margin-right: 15px;
+}
+
+#achievements-infos p {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.habit-days {
+  margin-left: 15px;
+}
+
+.info-tag {
+  width: 25px;
+}
+
+.calendar-numero-x {
+  border: 4px solid pink;
 }
