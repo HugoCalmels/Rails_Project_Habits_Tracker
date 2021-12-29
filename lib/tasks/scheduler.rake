@@ -18,7 +18,7 @@ namespace :scheduled_tasks do
             date: DateTime.current.to_date,
             cycle_result_success: cycle_success_total,
             cycle_result_failed: cycle_failed_total,
-            good_habit_id: habit.id
+            calendar: habit.calendar
           )
           habit.announced_checkpoints.times do
             habit.checkpoints.create(good_habit_id: habit.id)
@@ -49,7 +49,7 @@ namespace :scheduled_tasks do
               date: DateTime.current.to_date,
               cycle_result_success: cycle_success_total,
               cycle_result_failed: cycle_failed_total,
-              good_habit_id: habit.id
+              calendar: habit.calendar
             )
             habit.announced_checkpoints.times do
               habit.checkpoints.create(good_habit_id: habit.id)
@@ -81,7 +81,7 @@ namespace :scheduled_tasks do
               date: DateTime.current.to_date,
               cycle_result_success: cycle_success_total,
               cycle_result_failed: cycle_failed_total,
-              good_habit_id: habit.id
+              calendar: habit.calendar
             )
             habit.announced_checkpoints.times do
               habit.checkpoints.create(good_habit_id: habit.id)

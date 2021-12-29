@@ -1,17 +1,24 @@
-<h1>Stats#index</h1>
-<p>Find me in app/views/stats/index.html.erb</p>
+<%= render partial: "elements/header-auth.html.erb" %>
 
-<h1> lets build the stats </h1>
-
-<% @good_habits.each do |habit| %>
-  
-  <% habit.stats.each do |el| %>
-    <div class="stats-div">
-    <p>titre :<%= habit.title %></p>
-    <p>date : <%= el.date %></p>
-    <p>success : <%= el.cycle_result_success %></p>
-    <p>failed : <%= el.cycle_result_failed %></p>
-    </div>
+<div class="page">
+  <div class="div-page-header">
+    <h2 class="page-header"><%=@cycle.title.capitalize%> stats</h2>
+    <% if @cycle.title == "daily" %>
+    <p>Your stats will be updated <%= time_tag(Date.today, :format=>"on : #{Date.today.day.ordinalize} %b") %></p>
+    <% elsif @cycle.title == "weekly" %>
+    <p>Your stats will be updated <%= ((DateTime.current.to_date)+7).beginning_of_week.strftime("%A %d %B") %> </p>
+    <% elsif @cycle.title == "monthly" %>
+    <p>Your stats will be updated random monthly conditions.</p>
     <% end %>
- 
+    </div>
+</div>
+
+<% if @cycle.title == "daily" %>
+  <%= render partial: "elements/calendars/daily-calendar.html.erb" %>
+<% elsif @cycle.title == "weekly" %>
+<%= render partial: "elements/calendars/weekly-calendar.html.erb" %>
+<% elsif @cycle.title == "monthly" %>
+<%= render partial: "elements/calendars/monthly-calendar.html.erb" %>
 <% end %>
+
+
