@@ -1,7 +1,7 @@
 class Stat < ApplicationRecord
   before_create :default_values
-  belongs_to :good_habit, optional: true
-  belongs_to :bad_habit, optional: true
+  belongs_to :calendar, optional: true
+
 
 
   def default_values

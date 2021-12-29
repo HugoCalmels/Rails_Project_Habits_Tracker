@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       resources :stats
       resources :good_habits do
         resources :checkpoints
+        
       end
       resources :bad_habits
     end
