@@ -1,5 +1,5 @@
 <%= render partial: "elements/header-auth.html.erb" %>
-
+<%= render partial: "elements/alert-messages.html.erb" %>
 <div class="page">
   <div class="div-page-header">
     <h2 class="page-header"><%=@cycle.title.capitalize%> stats</h2>
@@ -11,7 +11,9 @@
     <p>Your stats will be updated random monthly conditions.</p>
     <% end %>
     </div>
-</div>
+    </div>   </div>
+
+<% if @good_habits.count > 0 %>
 
 <% if @cycle.title == "daily" %>
   <%= render partial: "elements/calendars/daily-calendar.html.erb" %>
@@ -19,6 +21,12 @@
 <%= render partial: "elements/calendars/weekly-calendar.html.erb" %>
 <% elsif @cycle.title == "monthly" %>
 <%= render partial: "elements/calendars/monthly-calendar.html.erb" %>
+<% end %>
+
+<% else %>
+<div class="beginner-friendly">
+<i>You don't have any records yet..</i>
+</div>
 <% end %>
 
 

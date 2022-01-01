@@ -1,5 +1,5 @@
 class CyclesController < ApplicationController
-  before_action :authenticate_user!, only: [:show, :index]
+  before_action :authenticate_user!, only: [:show, :index, :reset]
   def index
 
     if user_signed_in? 
@@ -25,6 +25,8 @@ class CyclesController < ApplicationController
     end
 
     def reset
+
+ 
       puts "MMMMMMMMMM"
       puts "we reached the reset method !"
       puts "MMMMMMMMMM"
@@ -32,7 +34,14 @@ class CyclesController < ApplicationController
       @user = User.find(params[:user_id])
       @good_habits = GoodHabit.where(cycle_id: @cycle.id, user_id: @user.id)
 
+      if @user.state == 'unactive'
+        redirect_to user_cycle_good_habits_path(params[:user_id], params[:cycle_title]), alert:"Your account is in sleep mode"
+        return
+      end
 
+
+      if !@good_habits[0].nil?
+        
 
       puts "MMMMMMMMMM"
       puts "we starting to code here !"
@@ -76,12 +85,27 @@ class CyclesController < ApplicationController
           habit.checkpoints.create(good_habit_id: habit.id)
         end
 
-
+        
       end
-
+      flash[:notice] = "Your checkpoints were reset and saved !"
+      redirect_to user_cycle_stats_path(params[:user_id], params[:cycle_title])
+      return
+    elsif @good_habits[0].nil?
+      puts "HELO.??????????????????"
+      puts "HELO.??????????????????"
+      puts "HELO.??????????????????"
+      puts "HELO.??????????????????"
+      puts "HELO.??????????????????"
+      puts "HELO.??????????????????"
+      puts "HELO.??????????????????"
+      puts "HELO.??????????????????"
+      puts "HELO.??????????????????"
+      puts "HELO.??????????????????"
       
-
-
+      redirect_to user_cycle_good_habits_path(params[:user_id], params[:cycle_title]), alert:"Need minimum 1x habit to simulate"
+      return
+    end
+    
 
     end
 

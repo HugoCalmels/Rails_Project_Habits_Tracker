@@ -26,15 +26,16 @@ class GoodHabitsController < ApplicationController
     @good_habit  = GoodHabit.new(good_habit_params)
     @good_habit.user = @user
     @good_habit.cycle = @cycle
-    if @good_habit.save!
+    if @good_habit.save
       @calendar = Calendar.create
       @good_habit.calendar = @calendar
       @good_habit.announced_checkpoints.times do
         @good_habit.checkpoints.create(good_habit_id: @good_habit.id)
+        
       end
     redirect_to user_cycle_good_habits_path(@user.id, @cycle.title)
     else 
-      render "new"
+      redirect_to new_user_cycle_good_habit_path(@user.id, @cycle.title), alert: @good_habit.errors.full_messages
     end
   end
 
@@ -43,19 +44,40 @@ class GoodHabitsController < ApplicationController
 
   def update
     puts "MMMMMMMMMMMMMMMMM"
-    puts params
-    puts "MMMMMMMMMMMMMMMMM"
+
     @good_habit = GoodHabit.find(params[:id])
-    puts "checkpoints : " + @good_habit.checkpoints.to_s
-    puts "successed checkpoints :" + @good_habit.successed_checkpoints.to_s
-  
-    if @good_habit.increment!(:successed_checkpoints)
-      redirect_to user_cycle_good_habits_path(params[:user_id], params[:cycle_title])
+
+    if @good_habit.update(good_habit_params)
+
+      redirect_to user_cycle_good_habits_path(params[:user_id], params[:cycle_title]), notice: "Habit updated !"
+        return
+      
+    else 
+      redirect_to user_cycle_good_habits_path(params[:user_id], params[:cycle_title]), alert: @good_habit.errors.full_messages
     end
 
   end
 
   def destroy
+    puts "hey Hello from destroy method"
+    puts "hey Hello from destroy method"
+    puts "hey Hello from destroy method"
+    puts "hey Hello from destroy method"
+    puts "hey Hello from destroy method"
+    puts "hey Hello from destroy method"
+    puts "hey Hello from destroy method"
+    @good_habit = GoodHabit.find(params[:id])
+    puts params[:good_habit][:title]
+    puts params[:good_habit][:title]
+
+    if @good_habit.title.capitalize == params[:good_habit][:title] ||@good_habit.title == params[:good_habit][:title]
+      @good_habit.destroy
+      redirect_to user_cycle_good_habits_path(params[:user_id], params[:cycle_title]) , notice: "Habit updated !"
+      return
+    else
+      redirect_to user_cycle_good_habits_path(params[:user_id], params[:cycle_title]), alert: "Error : habit title do not match"
+    end
+
   end
 
  

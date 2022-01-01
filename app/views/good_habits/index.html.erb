@@ -1,15 +1,22 @@
 <%= render partial: "elements/header-auth.html.erb" %>
+<%= render partial: "elements/alert-messages.html.erb" %>
 
 
 <div class="page">
 <div class="div-page-header">
 <h2 class="page-header"><%=@cycle.title.capitalize%> good habits</h2>
-<p>Create and open one habit to complete your <%=@cycle.title%> tasks</p>
+<p>Create and open one habit to complete your <%=@cycle.title%> tasks.<br />
+<i>Successed checkpoints will be reset <%=@cycle.title%>, announced checkpoints will stay the same</i></p>
 </div>
+
+
+
+<% if @good_habits.count > 0 %>
 
   <div class="habits-grid-container">
 
-  <% @good_habits.each do |habit| %>
+  <% @good_habits.reverse.each do |habit| %>
+    <% menuCondition = 'show' %>
 
     <div class="habit-grid" data-hover-target="#modal<%= habit.id%>">
       <div class="modal" id="modal<%= habit.id%>"> 
@@ -18,27 +25,51 @@
             <h5><%= habit.title.capitalize %></h5>
           </div>
         <div class="modal-menu">
-          <%= render partial: "elements/edit.html.erb" %>
-          <%= render partial: "elements/delete.html.erb" %>
+          <div class="gh-edit"><%= render partial: "elements/edit.html.erb" %></div>
+          <div class="gh-delete"><%= render partial: "elements/delete.html.erb" %></div>
           <button data-close-button class="close-btn"><%= render partial: "elements/close.html.erb" %></button>
         </div>
       </div>
       <div class="modal-body">
-      <div class="special-checkboxes">
-    <% habit.checkpoints.sort {|a,b| a.id <=> b.id}.each do|checkpoint| %>
-    <div class="checkboxe-element">
-      <%= form_for habit, url: user_cycle_good_habit_checkpoint_path(@user.id, @cycle.title, habit.id, checkpoint.id), method: "PUT", remote: true do |form|%>
-      <div class="checkpoint-data-<%= checkpoint.id %>" id="checkpoint">
-        <% if checkpoint.checked == false %>
-          <%= form.submit "Submit", :type => :image, :src => image_path("red_ck_3.png"), class: 'btn-submit-danger' %>
-        <% elsif checkpoint.checked == true %>
-          <%= form.submit "Submit", :type => :image, :src => image_path("green_ck_3.png"), class: 'btn-submit-success' %>
+
+
+      <div class="edit-habit">
+        
+        <%= form_for habit, url: user_cycle_good_habit_path(@user.id, @cycle.title, habit.id), method: "PUT" do |form|%>
+        <%= form.label :habit_title, class: "labels-inputs-1" %><br/>
+        <%= form.text_field :title, placeholder: "title", class: "form-inputs-1" %><br/>
+        <%= form.label :announced_checkpoints, class: "labels-inputs-1" %><br/>
+        <%= form.text_field :announced_checkpoints, class: "form-inputs-3" %><br/><br/>
+        <%= form.submit 'Update', class:"login-btn-3"%><br/>
         <% end %>
-      </div >
-      <% end %>
-    </div>
-    <% end %>
-  </div>
+      </div>
+
+
+      <div class="special-checkboxes">
+        <% habit.checkpoints.sort {|a,b| a.id <=> b.id}.each do|checkpoint| %>
+          <div class="checkboxe-element">
+            <%= form_for habit, url: user_cycle_good_habit_checkpoint_path(@user.id, @cycle.title, habit.id, checkpoint.id), method: "PUT", remote: true do |form|%>
+              <div class="checkpoint-data-<%= checkpoint.id %>" id="checkpoint">
+                <% if checkpoint.checked == false %>
+                  <%= form.submit "Submit", :type => :image, :src => image_path("red_ck_3.png"), class: 'btn-submit-danger' %>
+                <% elsif checkpoint.checked == true %>
+                  <%= form.submit "Submit", :type => :image, :src => image_path("green_ck_3.png"), class: 'btn-submit-success' %>
+                <% end %>
+              </div >
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="delete-habit">
+      <%= form_for habit, url: user_cycle_good_habit_path(@user.id, @cycle.title, habit.id), method: "DELETE" do |form|%>
+        <i>Confirm deletation by entering the habit name</i><br/>
+        <%= form.label :habit_title, class: "labels-inputs-1" %><br/>
+        <%= form.text_field :title, :value => "" , class: "form-inputs-1"%><br/><br/>
+        <%= form.submit 'Delete', class:"login-btn-3" %><br/>
+        <% end %>
+        </div>
+
   </div>
 </div>
 
@@ -154,15 +185,18 @@
   </button>
 
 </div>
-
-
 <% end %>
+<% else %> 
+  <div class="beginner-friendly">
+        <i>Click <strong><%= link_to 'here', new_user_cycle_good_habit_path(@user.id, @cycle.title) %></strong> to create your first <%=@cycle.title%> habit</i>
+  </div>
+<% end %>
+
 
 
 </div>
 <div id="overlay"></div>
 </div>
-
 
 
 <%= javascript_pack_tag 'index_gh'%>

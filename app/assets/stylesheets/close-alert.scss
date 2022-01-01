@@ -1,8 +1,8 @@
 .alert-messages {
   display: flex;
-
+  transition: all 0.3s;
   text-align: center;
-  max-width: 50%;
+  width: 70%;
 
   margin: 0 auto;
   margin-top: 20px !important;
@@ -10,9 +10,14 @@
   border-radius: 10px;
 
 }
+@media all and (max-width: 1100px) {
+  .alert-messages {
+    width: 80%;
+  }
+}
 @media all and (max-width: 600px) {
   .alert-messages {
-    max-width: 75%;
+    width: 90%;
   }
 }
 
@@ -22,11 +27,12 @@
   position: absolute;
   margin-top: -10px;
   cursor: pointer;
+  transition: all 0.3s;
 }
 
 
 .alert-notice {
-  background-color: rgba(0,128,0,.4);
+  background-color: rgba(6, 163, 6, 0.534);
   width: 100%;
   border-radius: 10px;
   border: 1px solid black;
@@ -37,7 +43,7 @@
   
 }
 .alert-warning {
-  background-color: rgba(255,165,0,.4);
+  background-color: rgba(212, 94, 16, 0.548);
   width: 100%;
   border-radius: 10px;
   border: 1px solid black;
@@ -48,6 +54,36 @@
 
 }
 .alert-alert {
+  background-color: rgba(216, 41, 22, 0.555);
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid black;
+  padding-top: 10px!important;
+  padding-bottom: 10px!important;
+  padding-left: 10px ;
+  padding-right: 30px;
+}
+
+.field_with_errors {
+  margin-bottom: 0px;
+}
+
+.alert-messages-2 {
+  display: flex;
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 10px;
+
+
+}
+@media all and (max-width: 600px) {
+  .alert-messages {
+    max-width: 75%;
+  }
+}
+
+.alert-alert-2 {
   background-color: rgba(250,128,114, 0.9);
   width: 100%;
   border-radius: 10px;
@@ -56,4 +92,5 @@
   padding-bottom: 10px!important;
   padding-left: 10px ;
   padding-right: 30px;
+  margin-bottom: 10px;
 }

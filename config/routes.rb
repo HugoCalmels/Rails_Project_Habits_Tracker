@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'how_it_works' => 'home#how_it_works'
   root to: "home#index"
   devise_for :users, :path_prefix => 'd'
-  resources :users, only: [:show, :index] do 
+  resources :users do 
     resources :cycles, param: :title, only: [:show, :index] do 
       get :reset
       resources :stats

@@ -1,17 +1,96 @@
 <nav class="middle-navbar"> 
-    <div class="middle-navbar-grid">
-      <%= link_to 'stats', user_cycle_stats_path(@user.id, @cycle.title) %>
+<div class="middle-navbar-grid">
+  <div class="middle-navbar-cycle-seleciton">
+  <div class="spe-header">
+      <p class='navbar-link-2''>Select cycle (<%= @cycle.title %>)</p>
+    </div>
+    <div class="spe-body">
+    <ul>
+    <li><%= link_to "Daily", user_cycle_good_habits_path(@user.id, "daily"), class:"bar" %></li>
+    <li><%= link_to "Weekly", user_cycle_good_habits_path(@user.id, "weekly"), class:"bar" %></li>
+    <li><%= link_to "Monthly", user_cycle_good_habits_path(@user.id, "monthly"), class:"bar" %></li>
+    </ul>
+    </div>
+    </div>
     </div>
     <div class="middle-navbar-grid">
-      <%= link_to 'New Good habit', new_user_cycle_good_habit_path(@user.id, @cycle.title) %>
-    </div>
-    <div class="middle-navbar-grid">
-      <%= form_for @cycle, url: user_cycle_reset_path(@user.id, @cycle.title), method: 'GET',remote: true do |form|%>
-      <%= form.submit 'simulate',  class: 'btn-test' %>
+    <a>Select habit (bad)</a>
+  </div>
+  <div class="middle-navbar-grid">
+  <% if !@good_habits.nil? %>
+  <%= link_to 'Create good habit', new_user_cycle_good_habit_path(@user.id, @cycle.title) ,  class: 'navbar-link-2'%>
+  <% else %>
+  <%= link_to 'Create bad habit', new_user_cycle_good_habit_path(@user.id, @cycle.title) ,  class: 'navbar-link-2'%>
+  <% end %>
+  </div>
+
+<% if @cycle.title == 'daily' || @cycle.title == 'weekly' %>
+<div class="middle-navbar-grid">
+      <%= form_for @cycle, url: user_cycle_reset_path(@user.id, @cycle.title), method: 'GET' do |form|%>
+      <%= form.submit 'Simulate',  class: 'navbar-link-2' %>
       <% end %>
     </div>
+<% end %>
     <div class="middle-navbar-grid">
-      <a>other habit(todo)</a>
+      <%= link_to 'Stats', user_cycle_stats_path(@user.id, @cycle.title),  class: 'navbar-link-2' %>
+    </div>
+   
+  
+    <div class="middle-navbar-grid">
+    <%= link_to 'Back', :back,  class: 'navbar-link-2' %>
+    </div>
+  
+</nav>
+
+
+
+<nav class="invis-middle-navbar">
+
+  <div class="invis-navbar-container">
+    <div class="invis-navbar-grid">
+
+    <div class="middle-navbar-cycle-seleciton-2">
+  <div class="spe-header-2">
+      <p class='navbar-link-2''>Select cycle (<%= @cycle.title %>)</p>
+    </div>
+    <div class="spe-body-2">
+    <ul>
+    <li><%= link_to "Daily", user_cycle_good_habits_path(@user.id, "daily"), class:"bar" %></li>
+    <li><%= link_to "Weekly", user_cycle_good_habits_path(@user.id, "weekly"), class:"bar" %></li>
+    <li><%= link_to "Monthly", user_cycle_good_habits_path(@user.id, "monthly"), class:"bar" %></li>
+    </ul>
+    </div>
+    </div>
+    </div>
+    <div class="middle-navbar-grid-2">
+    <a>Select habit (bad)</a>
+  </div>
+  <div class="middle-navbar-grid-2">
+  <% if !@good_habits.nil? %>
+  <%= link_to 'Create good habit', new_user_cycle_good_habit_path(@user.id, @cycle.title) ,  class: 'navbar-link-2'%>
+  <% else %>
+  <%= link_to 'Create bad habit', new_user_cycle_good_habit_path(@user.id, @cycle.title) ,  class: 'navbar-link-2'%>
+  <% end %>
+  </div>
+
+<% if @cycle.title == 'daily' || @cycle.title == 'weekly' %>
+<div class="middle-navbar-grid-2">
+      <%= form_for @cycle, url: user_cycle_reset_path(@user.id, @cycle.title), method: 'GET' do |form|%>
+      <%= form.submit 'Simulate',  class: 'navbar-link-2' %>
+      <% end %>
+    </div>
+<% end %>
+    <div class="middle-navbar-grid-2">
+      <%= link_to 'Stats', user_cycle_stats_path(@user.id, @cycle.title),  class: 'navbar-link-2' %>
+    </div>
+   
+  
+    <div class="middle-navbar-grid-2">
+    <%= link_to 'Back', :back,  class: 'navbar-link-2' %>
+    </div>
     </div>
   </div>
 </nav>
+
+
+<%= javascript_pack_tag 'middle-header'%>

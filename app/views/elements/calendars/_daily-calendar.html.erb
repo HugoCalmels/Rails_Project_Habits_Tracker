@@ -1,5 +1,5 @@
 <div class="calendars-wrapper">
-<% @good_habits.each do |habit| %>
+<% @good_habits.reverse.each do |habit| %>
 
   <div class="calendar-item">
     <h4> Stats for "<%= habit.title %>"</h4>
@@ -39,12 +39,14 @@
         <% arrayOfData << data %>
       <% end %>
        
+
 	    <% week.each do |day| %>
      
         <% if arrayOfData.count > 0 %>
         
           <%  if habit.calendar.stats.find { |i| i.date == day}  %>
-            <% habit.calendar.stats.each do |el| %>
+        
+            <% habit.calendar.stats.reverse.uniq { |s| s.date }.reverse.each do |el| %>
               <% if el.date == day %>
               <% success = el.cycle_result_success.to_i %>
               <% total = el.cycle_result_failed.to_i + success %>

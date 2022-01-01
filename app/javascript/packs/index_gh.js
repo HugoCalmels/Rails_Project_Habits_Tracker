@@ -3,7 +3,8 @@ console.log("HELLO FROM INDEX GH")
 const openModalButtons = document.querySelectorAll('[data-modal-target]') // new way to catch elements :D
 const closeModalButtons = document.querySelectorAll('[data-close-button]')
 const overlay = document.getElementById('overlay')
-
+let listOfModals = document.querySelectorAll('.modal')
+var menuCondition = false
 
 openModalButtons.forEach(button => {
   button.addEventListener('click', () =>{
@@ -21,8 +22,15 @@ closeModalButtons.forEach(button => {
 
 
 function openModal(modal) {
+  var edit = modal.querySelector('.edit-habit')
+  var deleteHabit = modal.querySelector('.delete-habit')
+  var show = modal.querySelector('.special-checkboxes')
   if (modal == null) return
   modal.classList.add('active')
+  show.style.display = 'grid';
+  edit.style.display = 'none';
+  deleteHabit.style.display = 'none';
+  menuCondition = false
   overlay.classList.add('active')
 }
 function closeModal(modal) {
@@ -36,5 +44,55 @@ overlay.addEventListener('click', () => {
   modals.forEach(modal => {
     closeModal(modal)
   })
+})
+
+
+
+
+listOfModals.forEach(modal => {
+  var editBtn = modal.querySelector('.modal-menu .gh-edit')
+  var deleteBtn = modal.querySelector('.modal-menu .gh-delete')
+  
+
+  editBtn.addEventListener('click', function (event) {
+    console.log("editBtn lancé")
+    event.preventDefault();
+    var edit = modal.querySelector('.edit-habit')
+    var show = modal.querySelector('.special-checkboxes')
+    var deleteHabit = modal.querySelector('.delete-habit')
+    if (menuCondition == false) {
+      edit.style.display = 'flex';
+      show.style.display = 'none';
+      deleteHabit.style.display = 'none';
+      menuCondition = true
+    } else if (menuCondition == true) {
+      edit.style.display = 'none';
+      show.style.display = 'grid';
+      deleteHabit.style.display = 'none';
+      menuCondition = false
+    }
+
+  })
+
+  deleteBtn.addEventListener('click', function (event) {
+    console.log("deleteBtn lancé")
+    event.preventDefault();
+    var edit = modal.querySelector('.edit-habit')
+    var deleteHabit = modal.querySelector('.delete-habit')
+    var show = modal.querySelector('.special-checkboxes')
+    if (menuCondition == false) {
+      deleteHabit.style.display = 'flex';
+      edit.style.display = 'none';
+      show.style.display= 'none';
+      menuCondition = true
+    } else if (menuCondition == true) {
+      deleteHabit.style.display = 'none';
+      edit.style.display = 'none';
+      show.style.display = 'grid';
+      menuCondition = false
+    }
+  })
+
+  
 })
 
