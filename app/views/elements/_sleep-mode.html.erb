@@ -1,0 +1,9 @@
+<div class="sleep-mode-wrapper">
+<%= form_for :user, url:user_path(current_user.id), method: 'patch' do |form| %>
+  <%if current_user.state == 'active' %>
+  <%= form.submit '', class:'sleep-btn'%>
+  <% elsif current_user.state == 'unactive' %>
+  <%= form.submit '', class:'awake-btn'%>
+  <%end %>
+<% end %>
+</div>

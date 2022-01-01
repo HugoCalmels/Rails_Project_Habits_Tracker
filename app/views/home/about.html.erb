@@ -1,4 +1,5 @@
 <%= render partial: "elements/header-not-auth.html.erb" %>
+<%= render partial: "elements/alert-messages.html.erb" %>
 <h2 class="page-header"> About</h2>
 
 <div class="step">
@@ -13,18 +14,18 @@
 </div>
 <div class="step">
 <div class="step-grid-item-1">
-  <div class="video-link">
-  <%= youtube_video "http://www.youtube.com/embed/PZ7lDrwYdZc" %>
+ 
+  <%= render partial: "elements/svgs/book.html.erb" %>
   
-  </div>
+
   </div>
   <div class="step-grid-item-2">
   <h4>Why an Habit Tracker ?</h4>
-  <p>While I was initially going for a To-do List, I found out a video about Habits, this is where it started.</p>
+  <p>While I was initially going for a To-do List, I found this <strong><a href="https://www.youtube.com/watch?v=PZ7lDrwYdZc">video</a></strong> about Habits, this is where it started.</p>
   <p>Searched for good PC habit trackers applications and couldn't find one that fited me.</p>
   <p>Also it was a bit challenging for me to do, and as I often say <i>"no challenge = no fun"</i>.</p>
-  <p>The original idea comes from a book, here is the link <a href="https://jamesclear.com/atomic-habits">"Atomic Habits by James Clear"</a></p>
-    </div>
+  <p>The original idea comes from a book, here is the link <strong><a href="https://jamesclear.com/atomic-habits">"Atomic Habits by James Clear"</a></strong></p>
+  </div>
 </div>
 
 <div class="step">
@@ -46,7 +47,7 @@
   <div class="step-grid-item-2">
   <h4>Technologies used</h4>
   <p>One of the goals were to deliver the project in less than 2 weeks, using less libraries as possible</p>
-  <p>The only librarie I used is Devise (for authentication), there is not any piece of Bootstrap around, just pure CSS/JS/SVG.</p>
+  <p>The only library I used is Devise (for authentication), there is not any piece of Bootstrap around, just pure CSS/JS/SVG.</p>
   <p>Here is the <a href="https://github.com/HugoCalmels/Rails_Project_Habits_Tracker">Github</a>.</p>
   </div>
 </div>

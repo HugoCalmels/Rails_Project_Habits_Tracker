@@ -1,5 +1,15 @@
-<h1>New Product</h1>
+<%= render partial: "elements/header-auth.html.erb" %>
+<%= render partial: "elements/alert-messages.html.erb" %>
+<div class="page">
+<div class="div-page-header">
+<h2 class="page-header">Create <%=@cycle.title%> habit</h2>
+</div>
+
+
 
 <%= render 'form', good_habit: @good_habit %>
 
-<%= link_to 'Back', root_path %>
+
+</div>
+
+</div>

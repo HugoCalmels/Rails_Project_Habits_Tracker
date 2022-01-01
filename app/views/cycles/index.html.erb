@@ -1,20 +1,48 @@
 <div class="header-not-auth">
 <h1 class="page-main-header">Habits Tracker</h1>
 </div>
+<%= render partial: "elements/alert-messages.html.erb" %>
 <div class="cycles-wrapper">
 <h2 class="page-header">Select a Cycle</h2>
 
 <div class="user-container">
 
 <div class="user-cycle-selection">
-<% @cycles.each do |cycle| %>
-  <ul>
-  <li>
-<%= link_to cycle.title, user_cycle_path(@user.id, cycle.title), class:"cycles-list-a" %>
-</li>
-</ul>
-  <% end %>
-  </div>
+
+    <div class="cycle-container">
+    <div class="cycle-button">
+    <%= link_to "daily", user_cycle_path(@user.id, "daily"), class:"cycles-list-a" %>
+    </div>
+      <div class="cycle-body">
+        <p>Daily checkpoints successed are reset each day at 2am </p>
+      </div>
+    </div>
+
+    <div class="cycle-container middle">
+    <div class="cycle-button">
+    <%= link_to "weekly", user_cycle_path(@user.id, "weekly"), class:"cycles-list-a" %>
+    </div>
+      <div class="cycle-body">
+        <p>Weekly checkpoints successed are reset each 1st day of the week at 2am </p>
+      </div>
+    </div>
+
+    <div class="cycle-container">
+    <div class="cycle-button">
+    <%= link_to "monthly", user_cycle_path(@user.id, "monthly"), class:"cycles-list-a" %>
+    </div>
+      <div class="cycle-body">
+        <p>Monthly checkpoints successed are reset each 1st day of the month at 2am </p>
+      </div>
+    </div>
+
+</div>
+
+</div>
+
+<div class="informations-2">
+
+<i>tip : you can simulate daily and weekly habits but not monthly ones.</i>
 
 </div>
 
