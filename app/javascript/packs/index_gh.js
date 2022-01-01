@@ -13,7 +13,6 @@ openModalButtons.forEach(button => {
   })
 })
 closeModalButtons.forEach(button => {
-  console.log(button)
   button.addEventListener('click', () =>{
     const modal = button.closest('.modal')
     closeModal(modal)
@@ -96,3 +95,25 @@ listOfModals.forEach(modal => {
   
 })
 
+
+// percentages for card divs
+
+let parentEl = document.querySelectorAll('#infos-wrapper')
+
+
+parentEl.forEach(element => {
+  var res = element.querySelector('.invis-percentages')
+  element.addEventListener('mouseover', () => {
+      console.log("innn")
+      res.style.display = 'block'
+  })
+})
+
+
+parentEl.forEach(element => {
+  var res = element.querySelector('.invis-percentages')
+  element.addEventListener('mouseout', () => {
+      console.log("out")
+      res.style.display = 'none'
+  })
+})

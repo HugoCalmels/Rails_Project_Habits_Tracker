@@ -4,7 +4,5 @@
 <% percentage = ((success/total)*100).round(2) %>
 <% left = total - success%>
 
-<div class="achievements-infos-<%= @checkpoint.good_habit.id%>" id="achievements-infos">
-<p class="achievement-paragraph"><%= left.to_i %> checkpoints left </p>
-<p class="achievement-paragraph">current achivement success : <%= percentage %>% </p>
-</div>
+<div class="invis-percentages <%= @checkpoint.good_habit.id%>" id="invis-percentages"><%= percentage.to_i%> %</div>
+

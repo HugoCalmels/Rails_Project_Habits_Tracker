@@ -22,6 +22,7 @@
 .small-wrapper .container {
   display: grid;
   gap: 10px;
+  margin-right: 30px;
 }
 
 .form-top {
@@ -44,6 +45,11 @@
   font-size: 20px;
   border-radius: 6px;
   padding: 5px;
+  @media (max-width:842px){
+    width: 150px;
+    height: 15px;
+    font-size: 15px;
+  }
 }
 .form-inputs-2 {
   width: 300px;
@@ -51,6 +57,11 @@
   font-size: 20px;
   border-radius: 6px;
   padding: 5px;
+  @media (max-width:842px){
+    width: 150px;
+    height: 15px;
+    font-size: 15px;
+  }
 }
 .form-inputs-3 {
   width: 35px;
@@ -58,10 +69,17 @@
   font-size: 20px;
   border-radius: 6px;
   padding: 5px;
+  @media (max-width:842px){
+    height: 15px;
+    font-size: 15px;
+  }
 }
 
 .labels-inputs-1 {
   font-size: 20px;
+  @media (max-width:842px){
+    font-size: 15px;
+  }
 }
 
 .login-btn {
@@ -75,6 +93,7 @@ font-size: 20px;
   color: rgb(67, 4, 70);
   border: 2px solid rgb(67, 4, 70);
   transition: all 0.3s;
+  
 }
 
 .login-btn:hover {
@@ -103,6 +122,9 @@ font-size: 20px;
       color: rgb(67, 4, 70);
       border: 2px solid rgb(67, 4, 70);
       transition: all 0.3s;
+      @media (max-width:842px){
+        font-size: 15px;
+      }
     }
     
     .login-btn-3:hover {

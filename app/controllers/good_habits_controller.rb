@@ -33,7 +33,7 @@ class GoodHabitsController < ApplicationController
         @good_habit.checkpoints.create(good_habit_id: @good_habit.id)
         
       end
-    redirect_to user_cycle_good_habits_path(@user.id, @cycle.title)
+    redirect_to user_cycle_good_habits_path(@user.id, @cycle.title), notice: "habit created !"
     else 
       redirect_to new_user_cycle_good_habit_path(@user.id, @cycle.title), alert: @good_habit.errors.full_messages
     end

@@ -6,7 +6,7 @@
 <div class="div-page-header">
 <h2 class="page-header"><%=@cycle.title.capitalize%> good habits</h2>
 <p>Create and open one habit to complete your <%=@cycle.title%> tasks.<br />
-<i>Successed checkpoints will be reset <%=@cycle.title%>, announced checkpoints will stay the same</i></p>
+<i class="spe-i">Successed checkpoints will be reset <%=@cycle.title%>, announced checkpoints will stay the same</i></p>
 </div>
 
 
@@ -81,29 +81,25 @@
       <h4><%= habit.title.capitalize %></h4>
     
     </div>
-    <div class="habit-days">
-    <% created_at = Date.parse(habit.created_at.to_s) %>
-    <% date_now = Date.current.to_date %>
-    <% difference = date_now.mjd - created_at.mjd %>
-    since <%= difference %>
-    <% if difference == 0 %>
-      day
-    <% else %>
-      days
-    <% end %>
-    </div>
-
+    <div class="spe-habit-days-<%= habit.id%>"id="spe-habit-days">
+    <div class="habit-days-<%= habit.id%>" id="habit-days">
+    
     <% success = habit.checkpoints.where(checked: true).count.to_f %>
   <% total = habit.announced_checkpoints.to_i %>
   <% percentage = ((success/total)*100).round(2) %>
   <% left = total - success%>
-    <div class="infos-wrapper-<%= habit.id%>" id="infos-wrapper">
-    <div class="achievements-infos-<%= habit.id%>" id="achievements-infos">
-    <p class="achievement-paragraph"><%= left.to_i %> checkpoints left </p>
-    <p class="achievement-paragraph">current achivement success : <%= percentage %>% </p>
+    <div class="spe-cks"><%= image_tag("green_ck_3", :class => "spe-ck") %> <%= success.to_i%></div>
+    <div class="spe-cks"><%= image_tag("red_ck_4", :class => "spe-ck") %> <%= left.to_i %></div>
     </div>
-    <div class="habit-rigth-col-<%= habit.id%>-grid" id="achievements-grid-wrapper">
+        </div>
+   
 
+    <div class="infos-wrapper-<%= habit.id%>" id="infos-wrapper">
+
+    <div class="invis-percentages <%= habit.id%>" id="invis-percentages"><%= percentage.to_i%> %</div>
+
+    <div class="habit-rigth-col-<%= habit.id%>-grid" id="achievements-grid-wrapper" name"habit-percentages">
+   
 
 <% if percentage == 0 && percentage < 16.67  %>
 <div class="achievement-grid red"></div>
@@ -177,11 +173,25 @@
   <div class="achievement-grid green3"></div>
   <div class="achievement-grid green3"></div>
   <div class="achievement-grid green3"></div>
-  </div>
+  
 <% end %>
     </div>
+    <% created_at = Date.parse(habit.created_at.to_s) %>
+    <% date_now = Date.current.to_date %>
+    <% difference = date_now.mjd - created_at.mjd %>
+    <div class="informations-3"><i>
+    created <%= difference %>
+    <% if difference == 0 %>
+      day ago
+    <% else %>
+      days ago
+    <% end %>
+    </i>
+    </div>
+
+    
   </div>
- 
+  </div>
   </button>
 
 </div>

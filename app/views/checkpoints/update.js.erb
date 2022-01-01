@@ -138,9 +138,15 @@ if (document.querySelector(".checkpoint-data-"+<%= @checkpoint.id %>+" input").c
   document.querySelectorAll(".habit-rigth-col-<%= @checkpoint.good_habit_id%>-grid .achievement-grid").forEach(el=>el.remove())
   document.querySelector(".habit-rigth-col-<%= @checkpoint.good_habit_id%>-grid").insertAdjacentHTML("afterbegin", "<%= j render 'numbers', checkpoint: @checkpoint %>")
 
+  document.querySelector(".habit-days-<%= @checkpoint.good_habit_id%>").remove()
+  document.querySelector(".spe-habit-days-<%= @checkpoint.good_habit_id%>").insertAdjacentHTML("afterbegin", "<%= j render 'numbers3', checkpoint: @checkpoint %>")
+
+  var res = document.querySelector(".infos-wrapper-<%= @checkpoint.good_habit_id%>")
+  var res2 = res.querySelector(".invis-percentages")
+  res2.remove()
+  document.querySelector(".infos-wrapper-<%= @checkpoint.good_habit_id%>").insertAdjacentHTML("afterbegin", "<%= j render 'numbers2', checkpoint: @checkpoint %>")
   
-  document.querySelector(".achievements-infos-<%= @checkpoint.good_habit.id%>").remove()
-  document.querySelector(".infos-wrapper-<%= @checkpoint.good_habit.id%>").insertAdjacentHTML("afterbegin", "<%= j render 'numbers2', checkpoint: @checkpoint %>")
+  
   
  
 
@@ -152,10 +158,37 @@ if (document.querySelector(".checkpoint-data-"+<%= @checkpoint.id %>+" input").c
   document.querySelectorAll(".habit-rigth-col-<%= @checkpoint.good_habit_id%>-grid .achievement-grid").forEach(el=>el.remove())
   document.querySelector(".habit-rigth-col-<%= @checkpoint.good_habit_id%>-grid").insertAdjacentHTML("afterbegin", "<%= j render 'numbers', checkpoint: @checkpoint %>")
   //
-  document.querySelector(".achievements-infos-<%= @checkpoint.good_habit.id%>").remove()
-  document.querySelector(".infos-wrapper-<%= @checkpoint.good_habit.id%>").insertAdjacentHTML("afterbegin", "<%= j render 'numbers2', checkpoint: @checkpoint %>")
+  //
+  document.querySelector(".habit-days-<%= @checkpoint.good_habit_id%>").remove()
+  document.querySelector(".spe-habit-days-<%= @checkpoint.good_habit_id%>").insertAdjacentHTML("afterbegin", "<%= j render 'numbers3', checkpoint: @checkpoint %>")
+  
+  var res = document.querySelector(".infos-wrapper-<%= @checkpoint.good_habit_id%>")
+  var res2 = res.querySelector(".invis-percentages")
+  res2.remove()
 
+  document.querySelector(".infos-wrapper-<%= @checkpoint.good_habit_id%>").insertAdjacentHTML("afterbegin", "<%= j render 'numbers2', checkpoint: @checkpoint %>")
 }
+
+
+var parentEl = document.querySelectorAll('#infos-wrapper')
+
+
+parentEl.forEach(element => {
+  var res = element.querySelector('.invis-percentages')
+  element.addEventListener('mouseover', () => {
+      console.log("innn")
+      res.style.display = 'block'
+  })
+})
+
+
+parentEl.forEach(element => {
+  var res = element.querySelector('.invis-percentages')
+  element.addEventListener('mouseout', () => {
+      console.log("out")
+      res.style.display = 'none'
+  })
+})
 
 function updateValue(e) {
   log.textContent = e.target.value;
