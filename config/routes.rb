@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'about' => 'home#about'
   get 'how_it_works' => 'home#how_it_works'
   root to: "home#index"
+  resources :messages, only: [:new, :create]
   devise_for :users, :path_prefix => 'd'
   resources :users do 
     resources :cycles, param: :title, only: [:show, :index] do 

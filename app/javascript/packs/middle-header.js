@@ -1,4 +1,3 @@
-console.log("hello from middle header js")
 
 var selectionDiv = document.querySelector('.middle-navbar-cycle-seleciton')
 
@@ -7,8 +6,6 @@ var menuCondition = false
 selectionDiv.addEventListener('click', (event) => {
   var res = selectionDiv.querySelector('.spe-body')
   var res2 = selectionDiv.querySelector('.navbar-link-2')
-  console.log("alo ?")
-  console.log(menuCondition)
   if (menuCondition == false) {
     res2.style.textDecoration = 'underline'
     res2.style.fontWeight = 'bold'

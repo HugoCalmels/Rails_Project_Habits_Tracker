@@ -13,7 +13,6 @@ class StatsController < ApplicationController
   end
 
   def show
-    puts params
     @stat = Stat.find_by(id: params[:id])
     @cycle = Cycle.find_by(title: params[:cycle_title])
     @user = User.find(params[:user_id])

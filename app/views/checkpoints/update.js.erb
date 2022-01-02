@@ -1,140 +1,15 @@
 
-// CHECKPOINT ID
-/*
-let currentCheckpoint = document.querySelector(".checkpoint-data-"+docId)
-console.log(currentCheckpoint)
-*/
-
-// let childBtn = currentCheckpoint.querySelector('.checkpoint-danger .input')
-// console.log(childBtn)
-//  console.log(document.querySelector(".checkpoint-data-"+<%= @checkpoint.id %>+" input").classList.contains("btn-submit-danger"))
-
-
-// <%= @good_habit_modal = GoodHabit.find_by(id: @checkpoint.good_habit.id) %>
-// Exemple avec 30%
-//document.querySelectorAll(".habit-rigth-col-<%= @checkpoint.good_habit_id%>-grid .achievement-grid").forEach(function (div, i) {
-//  console.log('%d: %s', i, div);
-//});
-
-//console.log(document.querySelector(".habit-rigth-col-<%= @checkpoint.good_habit_id%>-grid"))
-
-/*
-document.querySelectorAll(".habit-rigth-col-<%= @checkpoint.good_habit_id%>-grid .achievement-grid").forEach(el=>el.remove())
-console.log(document.querySelector(".habit-rigth-col-<%= @checkpoint.good_habit_id%>-grid").innerHTML)
-document.querySelector(".habit-rigth-col-<%= @checkpoint.good_habit_id%>-grid").innerHTML = `
-  <div class="achievement-grid"></div>
-  <div class="achievement-grid"></div>
-`;
-*/
-// ICI C SERIEUX //
-
 function toPercentage(y, x) {
   return ((y/x)*100).toFixed(2)
 }
 toPercentage()
 var successedCheckpoints = <%= @checkpoint.good_habit.checkpoints.where(checked: true).count %>
 var failedCheckpoints = <%= @checkpoint.good_habit.announced_checkpoints %>
-
-console.log("il y a :"+successedCheckpoints+"ck successed")
-console.log("il y a :"+failedCheckpoints+"ck failed")
-
 var result = toPercentage(successedCheckpoints, failedCheckpoints)
-console.log("result :"+result+"%")
-
-
-
-// document.querySelectorAll(".habit-rigth-col-<%= @checkpoint.good_habit_id%>-grid .achievement-grid").forEach(el=>el.remove())
-
-
-
-
-
-function drawAchievement(percentage) {
-  console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
-
-  document.querySelectorAll(".habit-rigth-col-<%= @checkpoint.good_habit_id%>-grid .achievement-grid").forEach(el=>el.remove())
-
-  if (percentage == 100) {
-    console.log('BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB')
-    document.querySelectorAll(".habit-rigth-col-<%= @checkpoint.good_habit_id%>-grid .achievement-grid").forEach(function (value, i) {
-      console.log('%d: %s', i, value);
-      console.log("percentage is :"+percentage+"%")
-      
-      });
-  } else if ((percentage < 100) && (percentage > 80)) {
-    console.log('CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC')
-   document.querySelectorAll(".habit-rigth-col-<%= @checkpoint.good_habit_id%>-grid .achievement-grid").forEach(function (value, i) {
-      console.log('%d: %s', i, value);
-      console.log("percentage is :"+percentage+"%")
-      console.log(value[0])
-      console.log(value[1])
-      console.log(value[2])
-      console.log(value[3])
-      console.log(value[4])
-  
-   
-      });
-  } else if ((percentage <= 80) && (percentage > 60)) {
-    console.log('DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD')
-    document.querySelectorAll(".habit-rigth-col-<%= @checkpoint.good_habit_id%>-grid .achievement-grid").forEach(function (value, i) {
-      console.log('%d: %s', i, value);
-      console.log("percentage is :"+percentage+"%")
-      console.log(value[0])
-      console.log(value[1])
-      console.log(value[2])
-      console.log(value[3])
-      console.log(value[4])
-    });
-  } else if ((percentage <= 60) && (percentage > 40)) {
-    console.log('EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE')
-    document.querySelectorAll(".habit-rigth-col-<%= @checkpoint.good_habit_id%>-grid .achievement-grid").forEach(function (value, i) {
-      console.log('%d: %s', i, value);
-      console.log("percentage is :"+percentage+"%")
-      console.log(value[0])
-      console.log(value[1])
-      console.log(value[2])
-      console.log(value[3])
-      console.log(value[4])
-    });
-  } else if ((percentage <= 40) && (percentage > 20)) {
-    console.log('FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF')
-    console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
-    // console.log(document.querySelectorAll(".habit-rigth-col-<%= @checkpoint.good_habit_id%>-grid .achievement-grid")[0])
-
-    document.querySelector(".habit-rigth-col-<%= @checkpoint.good_habit_id%>-grid").insertAdjacentHTML("afterbegin", "<%= j render 'numbers', checkpoint: @checkpoint %>")
-    console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
-
-  } else if (percentage <= 20) {
-    console.log('GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG')
-    document.querySelectorAll(".habit-rigth-col-<%= @checkpoint.good_habit_id%>-grid .achievement-grid").forEach(function (value, i) {
-      console.log('%d: %s', i, value);
-      console.log("percentage is :"+percentage+"%")
-      console.log(value[0])
-      console.log(value[1])
-      console.log(value[2])
-      console.log(value[3])
-      console.log(value[4])
-    });
-  } else if (percentage == 0){
-    console.log('HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH')
-    document.querySelectorAll(".habit-rigth-col-<%= @checkpoint.good_habit_id%>-grid .achievement-grid").forEach(function (value, i) {
-      console.log('%d: %s', i, value);
-      console.log("percentage is :"+percentage+"%")
-      value[0].style.backgroundColor = "red";
-      value[1].style.backgroundColor = "grey";
-      value[2].style.backgroundColor = "grey";
-      value[3].style.backgroundColor = "grey";
-      value[4].style.backgroundColor = "grey";
-    });
-  }
-}
-
-
 
 if (document.querySelector(".checkpoint-data-"+<%= @checkpoint.id %>+" input").classList.contains("btn-submit-danger")) {
   document.querySelector(".checkpoint-data-"+<%= @checkpoint.id %>+" input").remove()
   document.querySelector(".checkpoint-data-"+<%= @checkpoint.id %>).insertAdjacentHTML("afterbegin", "<%= j render 'checkpoint', checkpoint: @checkpoint %>")
-  // changer le style selon le pourcentage genre, 
   document.querySelectorAll(".habit-rigth-col-<%= @checkpoint.good_habit_id%>-grid .achievement-grid").forEach(el=>el.remove())
   document.querySelector(".habit-rigth-col-<%= @checkpoint.good_habit_id%>-grid").insertAdjacentHTML("afterbegin", "<%= j render 'numbers', checkpoint: @checkpoint %>")
 
@@ -145,20 +20,12 @@ if (document.querySelector(".checkpoint-data-"+<%= @checkpoint.id %>+" input").c
   var res2 = res.querySelector(".invis-percentages")
   res2.remove()
   document.querySelector(".infos-wrapper-<%= @checkpoint.good_habit_id%>").insertAdjacentHTML("afterbegin", "<%= j render 'numbers2', checkpoint: @checkpoint %>")
-  
-  
-  
- 
 
 } else if (document.querySelector(".checkpoint-data-"+<%= @checkpoint.id %>+" input").classList.contains("btn-submit-success")) {
   document.querySelector(".checkpoint-data-"+<%= @checkpoint.id %>+" input").remove()
   document.querySelector(".checkpoint-data-"+<%= @checkpoint.id %>).insertAdjacentHTML("afterbegin", "<%= j render 'checkpoint', checkpoint: @checkpoint %>")
-  //document.querySelectorAll(".habit-rigth-col-<%= @checkpoint.good_habit_id%>-grid p")[0].remove()
-  //document.querySelectorAll(".habit-rigth-col-<%= @checkpoint.good_habit_id%>-grid p")[0].remove()
   document.querySelectorAll(".habit-rigth-col-<%= @checkpoint.good_habit_id%>-grid .achievement-grid").forEach(el=>el.remove())
   document.querySelector(".habit-rigth-col-<%= @checkpoint.good_habit_id%>-grid").insertAdjacentHTML("afterbegin", "<%= j render 'numbers', checkpoint: @checkpoint %>")
-  //
-  //
   document.querySelector(".habit-days-<%= @checkpoint.good_habit_id%>").remove()
   document.querySelector(".spe-habit-days-<%= @checkpoint.good_habit_id%>").insertAdjacentHTML("afterbegin", "<%= j render 'numbers3', checkpoint: @checkpoint %>")
   
@@ -169,23 +36,18 @@ if (document.querySelector(".checkpoint-data-"+<%= @checkpoint.id %>+" input").c
   document.querySelector(".infos-wrapper-<%= @checkpoint.good_habit_id%>").insertAdjacentHTML("afterbegin", "<%= j render 'numbers2', checkpoint: @checkpoint %>")
 }
 
-
 var parentEl = document.querySelectorAll('#infos-wrapper')
-
 
 parentEl.forEach(element => {
   var res = element.querySelector('.invis-percentages')
   element.addEventListener('mouseover', () => {
-      console.log("innn")
       res.style.display = 'block'
   })
 })
 
-
 parentEl.forEach(element => {
   var res = element.querySelector('.invis-percentages')
   element.addEventListener('mouseout', () => {
-      console.log("out")
       res.style.display = 'none'
   })
 })
@@ -194,11 +56,3 @@ function updateValue(e) {
   log.textContent = e.target.value;
 }
 
-
-
-
-// changer le contenu, X, changer la couleur
-
-
-// document.getElementById("checkpoint-list")
-// .insertAdjacentHTML("beforeend", "<%= j render 'checkpoint', checkpoint: @checkpoint %>")

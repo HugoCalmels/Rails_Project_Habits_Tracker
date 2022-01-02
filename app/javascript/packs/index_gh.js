@@ -1,4 +1,3 @@
-console.log("HELLO FROM INDEX GH")
 
 const openModalButtons = document.querySelectorAll('[data-modal-target]') // new way to catch elements :D
 const closeModalButtons = document.querySelectorAll('[data-close-button]')
@@ -98,13 +97,12 @@ listOfModals.forEach(modal => {
 
 // percentages for card divs
 
-let parentEl = document.querySelectorAll('#infos-wrapper')
+var parentEl = document.querySelectorAll('#infos-wrapper')
 
 
 parentEl.forEach(element => {
   var res = element.querySelector('.invis-percentages')
   element.addEventListener('mouseover', () => {
-      console.log("innn")
       res.style.display = 'block'
   })
 })
@@ -113,7 +111,6 @@ parentEl.forEach(element => {
 parentEl.forEach(element => {
   var res = element.querySelector('.invis-percentages')
   element.addEventListener('mouseout', () => {
-      console.log("out")
       res.style.display = 'none'
   })
 })

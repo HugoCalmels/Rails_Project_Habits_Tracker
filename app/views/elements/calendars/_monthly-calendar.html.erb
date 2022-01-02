@@ -2,7 +2,9 @@
 <% @good_habits.reverse.each do |habit| %>
 
   <div class="calendar-item">
+  <div class="calendar-header">
     <h4> Stats for "<%= habit.title %>"</h4>
+    </div>
 
     <% start_date = (DateTime.current.to_date.beginning_of_week.advance(:days => +1)) -365 %>
     <% end_date = DateTime.current.to_date.end_of_week %>

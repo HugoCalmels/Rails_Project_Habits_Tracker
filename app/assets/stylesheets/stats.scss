@@ -112,6 +112,16 @@
   max-width: 70%;
   margin: 0 auto!important;
 }
+.calendar-header {
+  @media (max-width:1400px){
+    display: flex;
+    justify-content: flex-end;
+    justify-self: flex-end;
+    align-items: flex-end;
+    align-self: flex-end;
+    text-align: end;
+  }
+}
 
 .calendar-item {
   margin-bottom: 30px;
