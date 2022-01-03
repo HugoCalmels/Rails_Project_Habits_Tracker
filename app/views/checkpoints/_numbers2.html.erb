@@ -1,10 +1,24 @@
 
+<% if !@checkpoint.good_habit.nil? %>
 <% success = @checkpoint.good_habit.checkpoints.where(checked: true).count.to_f %>
 <% total = @checkpoint.good_habit.announced_checkpoints.to_i %>
-<% percentage = ((success/total)*100).round(2) %>
+<% percentage = ((success/total.to_f)*100).to_i %>
+
 <% left = total - success%>
 
-<div class="achievements-infos-<%= @checkpoint.good_habit.id%>" id="achievements-infos">
-<p class="achievement-paragraph"><%= left.to_i %> checkpoints left </p>
-<p class="achievement-paragraph">current achivement success : <%= percentage %>% </p>
-</div>
+<div class="invis-percentages <%= @checkpoint.good_habit.id%>" id="invis-percentages"><%= percentage.to_i%> %</div>
+
+
+
+<% elsif !@checkpoint.bad_habit.nil? %>
+
+<% success = @checkpoint.bad_habit.checkpoints.where(checked: true).count.to_f %>
+<% total = @checkpoint.bad_habit.announced_checkpoints.to_i %>
+<% percentage = 100 - ((success/total.to_f)*100).to_i %>
+
+<% left = total - success%>
+
+<div class="invis-percentages <%= @checkpoint.bad_habit.id%>" id="invis-percentages"><%= percentage.to_i%> %</div>
+
+
+<% end %>

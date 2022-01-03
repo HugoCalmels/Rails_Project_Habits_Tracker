@@ -5,6 +5,10 @@
   padding-right: 10px;
   padding-top: 5px;
   padding-bottom: 5px;
+  @media  (max-width: 450px) {
+    padding-left: 5px;
+  padding-right: 5px;
+  }
 }
 
 .navbar-custom .navbar-left-menu{
@@ -23,11 +27,11 @@
 .navbar-custom .navbar-title{
   font-size: 20px;
   font-weight: 500;
-  margin-right: 20px;
+  margin-right: 15px;
   float: left;
   text-decoration: none;
   border-radius: 6px;
-  margin-left: 10px;
+  margin-left: 5px;
   font-family: "Prompt", serif;
   background-color: rgb(67, 4, 70);
   color: rgb(234, 229, 98);
@@ -36,21 +40,33 @@
   padding-right: 5px;
   border: 2px solid rgb(67, 4, 70);
 
+  @media (max-width: 450px) {
+    font-size: 17px;
+    padding-top:2px;
+    padding-bottom:2px;
+  }
+
 }
 .navbar-custom .navbar-title:hover{
   text-decoration: underline;
 }
 
 .hamburger {
-  background-color: red;
   float: right;
   display: none;
+  margin-top: 3px;
+  margin-right: -5px;
 }
 .list-hamburger {
-  background-color: lightgreen;
+  background-image: linear-gradient(rgb(234, 229, 98), rgb(240, 232, 0));
   display: none;
   right: 0;
   position: absolute;
+  border-bottom: 2px solid rgb(67, 4, 70);
+  border-left: 2px solid rgb(67, 4, 70);
+  border-right: 2px solid rgb(67, 4, 70);
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
 
 }
 .list-hamburger ul {
@@ -116,6 +132,8 @@ input[type="button"] {
 .menu-toggle {
   font-size: 0.875em;
 	padding: 1em;
+  background: none;
+  margin-right: -5px;
 }
 .menu-toggle:focus {
 	outline: thin dotted;
@@ -174,3 +192,21 @@ input[type="button"] {
 }
 
 /* end SVG animated menu */
+.navbar-right-submenu {
+  display: flex;
+  flex-direction: row;
+}
+
+.sub-menu-left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right:75px;
+  top: 10px;
+  margin-top: 2px;
+  @media (max-width: 700px) {
+    right:35px;
+  }
+  
+}

@@ -1,32 +1,25 @@
+<% if 1 == 1 %>
+console.log('<%= @checkpoint.good_habit %>')
+console.log('<%= @checkpoint.bad_habit %>')
+console.log('1ruby')
+console.log('1ruby')
+<% end %>
 
-// CHECKPOINT ID
-/*
-let currentCheckpoint = document.querySelector(".checkpoint-data-"+docId)
-console.log(currentCheckpoint)
-*/
+if (1 == 1) {
+  console.log('1js')
+  console.log('1js')
+  console.log('1js')
+}
 
-// let childBtn = currentCheckpoint.querySelector('.checkpoint-danger .input')
-// console.log(childBtn)
-//  console.log(document.querySelector(".checkpoint-data-"+<%= @checkpoint.id %>+" input").classList.contains("btn-submit-danger"))
+<% if !@checkpoint.good_habit.nil? %>
+console.log('<%= @checkpoint.good_habit %>')
+console.log('<%= @checkpoint.bad_habit %>')
+console.log('1ruby')
+console.log('1ruby')
+<% end %>
 
 
-// <%= @good_habit_modal = GoodHabit.find_by(id: @checkpoint.good_habit.id) %>
-// Exemple avec 30%
-//document.querySelectorAll(".habit-rigth-col-<%= @checkpoint.good_habit_id%>-grid .achievement-grid").forEach(function (div, i) {
-//  console.log('%d: %s', i, div);
-//});
-
-//console.log(document.querySelector(".habit-rigth-col-<%= @checkpoint.good_habit_id%>-grid"))
-
-/*
-document.querySelectorAll(".habit-rigth-col-<%= @checkpoint.good_habit_id%>-grid .achievement-grid").forEach(el=>el.remove())
-console.log(document.querySelector(".habit-rigth-col-<%= @checkpoint.good_habit_id%>-grid").innerHTML)
-document.querySelector(".habit-rigth-col-<%= @checkpoint.good_habit_id%>-grid").innerHTML = `
-  <div class="achievement-grid"></div>
-  <div class="achievement-grid"></div>
-`;
-*/
-// ICI C SERIEUX //
+<% if !@checkpoint.good_habit.nil? %>
 
 function toPercentage(y, x) {
   return ((y/x)*100).toFixed(2)
@@ -34,138 +27,117 @@ function toPercentage(y, x) {
 toPercentage()
 var successedCheckpoints = <%= @checkpoint.good_habit.checkpoints.where(checked: true).count %>
 var failedCheckpoints = <%= @checkpoint.good_habit.announced_checkpoints %>
-
-console.log("il y a :"+successedCheckpoints+"ck successed")
-console.log("il y a :"+failedCheckpoints+"ck failed")
-
 var result = toPercentage(successedCheckpoints, failedCheckpoints)
-console.log("result :"+result+"%")
-
-
-
-// document.querySelectorAll(".habit-rigth-col-<%= @checkpoint.good_habit_id%>-grid .achievement-grid").forEach(el=>el.remove())
-
-
-
-
-
-function drawAchievement(percentage) {
-  console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
-
-  document.querySelectorAll(".habit-rigth-col-<%= @checkpoint.good_habit_id%>-grid .achievement-grid").forEach(el=>el.remove())
-
-  if (percentage == 100) {
-    console.log('BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB')
-    document.querySelectorAll(".habit-rigth-col-<%= @checkpoint.good_habit_id%>-grid .achievement-grid").forEach(function (value, i) {
-      console.log('%d: %s', i, value);
-      console.log("percentage is :"+percentage+"%")
-      
-      });
-  } else if ((percentage < 100) && (percentage > 80)) {
-    console.log('CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC')
-   document.querySelectorAll(".habit-rigth-col-<%= @checkpoint.good_habit_id%>-grid .achievement-grid").forEach(function (value, i) {
-      console.log('%d: %s', i, value);
-      console.log("percentage is :"+percentage+"%")
-      console.log(value[0])
-      console.log(value[1])
-      console.log(value[2])
-      console.log(value[3])
-      console.log(value[4])
-  
-   
-      });
-  } else if ((percentage <= 80) && (percentage > 60)) {
-    console.log('DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD')
-    document.querySelectorAll(".habit-rigth-col-<%= @checkpoint.good_habit_id%>-grid .achievement-grid").forEach(function (value, i) {
-      console.log('%d: %s', i, value);
-      console.log("percentage is :"+percentage+"%")
-      console.log(value[0])
-      console.log(value[1])
-      console.log(value[2])
-      console.log(value[3])
-      console.log(value[4])
-    });
-  } else if ((percentage <= 60) && (percentage > 40)) {
-    console.log('EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE')
-    document.querySelectorAll(".habit-rigth-col-<%= @checkpoint.good_habit_id%>-grid .achievement-grid").forEach(function (value, i) {
-      console.log('%d: %s', i, value);
-      console.log("percentage is :"+percentage+"%")
-      console.log(value[0])
-      console.log(value[1])
-      console.log(value[2])
-      console.log(value[3])
-      console.log(value[4])
-    });
-  } else if ((percentage <= 40) && (percentage > 20)) {
-    console.log('FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF')
-    console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
-    // console.log(document.querySelectorAll(".habit-rigth-col-<%= @checkpoint.good_habit_id%>-grid .achievement-grid")[0])
-
-    document.querySelector(".habit-rigth-col-<%= @checkpoint.good_habit_id%>-grid").insertAdjacentHTML("afterbegin", "<%= j render 'numbers', checkpoint: @checkpoint %>")
-    console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
-
-  } else if (percentage <= 20) {
-    console.log('GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG')
-    document.querySelectorAll(".habit-rigth-col-<%= @checkpoint.good_habit_id%>-grid .achievement-grid").forEach(function (value, i) {
-      console.log('%d: %s', i, value);
-      console.log("percentage is :"+percentage+"%")
-      console.log(value[0])
-      console.log(value[1])
-      console.log(value[2])
-      console.log(value[3])
-      console.log(value[4])
-    });
-  } else if (percentage == 0){
-    console.log('HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH')
-    document.querySelectorAll(".habit-rigth-col-<%= @checkpoint.good_habit_id%>-grid .achievement-grid").forEach(function (value, i) {
-      console.log('%d: %s', i, value);
-      console.log("percentage is :"+percentage+"%")
-      value[0].style.backgroundColor = "red";
-      value[1].style.backgroundColor = "grey";
-      value[2].style.backgroundColor = "grey";
-      value[3].style.backgroundColor = "grey";
-      value[4].style.backgroundColor = "grey";
-    });
-  }
-}
-
-
 
 if (document.querySelector(".checkpoint-data-"+<%= @checkpoint.id %>+" input").classList.contains("btn-submit-danger")) {
   document.querySelector(".checkpoint-data-"+<%= @checkpoint.id %>+" input").remove()
   document.querySelector(".checkpoint-data-"+<%= @checkpoint.id %>).insertAdjacentHTML("afterbegin", "<%= j render 'checkpoint', checkpoint: @checkpoint %>")
-  // changer le style selon le pourcentage genre, 
   document.querySelectorAll(".habit-rigth-col-<%= @checkpoint.good_habit_id%>-grid .achievement-grid").forEach(el=>el.remove())
   document.querySelector(".habit-rigth-col-<%= @checkpoint.good_habit_id%>-grid").insertAdjacentHTML("afterbegin", "<%= j render 'numbers', checkpoint: @checkpoint %>")
 
-  
-  document.querySelector(".achievements-infos-<%= @checkpoint.good_habit.id%>").remove()
-  document.querySelector(".infos-wrapper-<%= @checkpoint.good_habit.id%>").insertAdjacentHTML("afterbegin", "<%= j render 'numbers2', checkpoint: @checkpoint %>")
-  
- 
+  document.querySelector(".habit-days-<%= @checkpoint.good_habit_id%>").remove()
+  document.querySelector(".spe-habit-days-<%= @checkpoint.good_habit_id%>").insertAdjacentHTML("afterbegin", "<%= j render 'numbers3', checkpoint: @checkpoint %>")
+
+  var res = document.querySelector(".infos-wrapper-<%= @checkpoint.good_habit_id%>")
+  var res2 = res.querySelector(".invis-percentages")
+  res2.remove()
+  document.querySelector(".infos-wrapper-<%= @checkpoint.good_habit_id%>").insertAdjacentHTML("afterbegin", "<%= j render 'numbers2', checkpoint: @checkpoint %>")
 
 } else if (document.querySelector(".checkpoint-data-"+<%= @checkpoint.id %>+" input").classList.contains("btn-submit-success")) {
   document.querySelector(".checkpoint-data-"+<%= @checkpoint.id %>+" input").remove()
   document.querySelector(".checkpoint-data-"+<%= @checkpoint.id %>).insertAdjacentHTML("afterbegin", "<%= j render 'checkpoint', checkpoint: @checkpoint %>")
-  //document.querySelectorAll(".habit-rigth-col-<%= @checkpoint.good_habit_id%>-grid p")[0].remove()
-  //document.querySelectorAll(".habit-rigth-col-<%= @checkpoint.good_habit_id%>-grid p")[0].remove()
   document.querySelectorAll(".habit-rigth-col-<%= @checkpoint.good_habit_id%>-grid .achievement-grid").forEach(el=>el.remove())
   document.querySelector(".habit-rigth-col-<%= @checkpoint.good_habit_id%>-grid").insertAdjacentHTML("afterbegin", "<%= j render 'numbers', checkpoint: @checkpoint %>")
-  //
-  document.querySelector(".achievements-infos-<%= @checkpoint.good_habit.id%>").remove()
-  document.querySelector(".infos-wrapper-<%= @checkpoint.good_habit.id%>").insertAdjacentHTML("afterbegin", "<%= j render 'numbers2', checkpoint: @checkpoint %>")
+  document.querySelector(".habit-days-<%= @checkpoint.good_habit_id%>").remove()
+  document.querySelector(".spe-habit-days-<%= @checkpoint.good_habit_id%>").insertAdjacentHTML("afterbegin", "<%= j render 'numbers3', checkpoint: @checkpoint %>")
+  
+  var res = document.querySelector(".infos-wrapper-<%= @checkpoint.good_habit_id%>")
+  var res2 = res.querySelector(".invis-percentages")
+  res2.remove()
 
+  document.querySelector(".infos-wrapper-<%= @checkpoint.good_habit_id%>").insertAdjacentHTML("afterbegin", "<%= j render 'numbers2', checkpoint: @checkpoint %>")
 }
+
+var parentEl = document.querySelectorAll('#infos-wrapper')
+
+parentEl.forEach(element => {
+  var res = element.querySelector('.invis-percentages')
+  element.addEventListener('mouseover', () => {
+      res.style.display = 'block'
+  })
+})
+
+parentEl.forEach(element => {
+  var res = element.querySelector('.invis-percentages')
+  element.addEventListener('mouseout', () => {
+      res.style.display = 'none'
+  })
+})
 
 function updateValue(e) {
   log.textContent = e.target.value;
 }
 
 
+// -------------------------------- //
 
+<% elsif !@checkpoint.bad_habit.nil? %>
 
-// changer le contenu, X, changer la couleur
+function toPercentage(y, x) {
+  return ((y/x)*100).toFixed(2)
+}
+toPercentage()
+var successedCheckpoints = <%= @checkpoint.bad_habit.checkpoints.where(checked: true).count %>
+var failedCheckpoints = <%= @checkpoint.bad_habit.announced_checkpoints %>
+var result = toPercentage(successedCheckpoints, failedCheckpoints)
 
+if (document.querySelector(".checkpoint-data-"+<%= @checkpoint.id %>+" input").classList.contains("btn-submit-danger")) {
+  document.querySelector(".checkpoint-data-"+<%= @checkpoint.id %>+" input").remove()
+  document.querySelector(".checkpoint-data-"+<%= @checkpoint.id %>).insertAdjacentHTML("afterbegin", "<%= j render 'checkpoint', checkpoint: @checkpoint %>")
+  document.querySelectorAll(".habit-rigth-col-<%= @checkpoint.bad_habit_id%>-grid .achievement-grid").forEach(el=>el.remove())
+  document.querySelector(".habit-rigth-col-<%= @checkpoint.bad_habit_id%>-grid").insertAdjacentHTML("afterbegin", "<%= j render 'numbers', checkpoint: @checkpoint %>")
 
-// document.getElementById("checkpoint-list")
-// .insertAdjacentHTML("beforeend", "<%= j render 'checkpoint', checkpoint: @checkpoint %>")
+  document.querySelector(".habit-days-<%= @checkpoint.bad_habit_id%>").remove()
+  document.querySelector(".spe-habit-days-<%= @checkpoint.bad_habit_id%>").insertAdjacentHTML("afterbegin", "<%= j render 'numbers3', checkpoint: @checkpoint %>")
+
+  var res = document.querySelector(".infos-wrapper-<%= @checkpoint.bad_habit_id%>")
+  var res2 = res.querySelector(".invis-percentages")
+  res2.remove()
+  document.querySelector(".infos-wrapper-<%= @checkpoint.bad_habit_id%>").insertAdjacentHTML("afterbegin", "<%= j render 'numbers2', checkpoint: @checkpoint %>")
+
+} else if (document.querySelector(".checkpoint-data-"+<%= @checkpoint.id %>+" input").classList.contains("btn-submit-success")) {
+  document.querySelector(".checkpoint-data-"+<%= @checkpoint.id %>+" input").remove()
+  document.querySelector(".checkpoint-data-"+<%= @checkpoint.id %>).insertAdjacentHTML("afterbegin", "<%= j render 'checkpoint', checkpoint: @checkpoint %>")
+  document.querySelectorAll(".habit-rigth-col-<%= @checkpoint.bad_habit_id%>-grid .achievement-grid").forEach(el=>el.remove())
+  document.querySelector(".habit-rigth-col-<%= @checkpoint.bad_habit_id%>-grid").insertAdjacentHTML("afterbegin", "<%= j render 'numbers', checkpoint: @checkpoint %>")
+  document.querySelector(".habit-days-<%= @checkpoint.bad_habit_id%>").remove()
+  document.querySelector(".spe-habit-days-<%= @checkpoint.bad_habit_id%>").insertAdjacentHTML("afterbegin", "<%= j render 'numbers3', checkpoint: @checkpoint %>")
+  
+  var res = document.querySelector(".infos-wrapper-<%= @checkpoint.bad_habit_id%>")
+  var res2 = res.querySelector(".invis-percentages")
+  res2.remove()
+
+  document.querySelector(".infos-wrapper-<%= @checkpoint.bad_habit_id%>").insertAdjacentHTML("afterbegin", "<%= j render 'numbers2', checkpoint: @checkpoint %>")
+}
+
+var parentEl = document.querySelectorAll('#infos-wrapper')
+
+parentEl.forEach(element => {
+  var res = element.querySelector('.invis-percentages')
+  element.addEventListener('mouseover', () => {
+      res.style.display = 'block'
+  })
+})
+
+parentEl.forEach(element => {
+  var res = element.querySelector('.invis-percentages')
+  element.addEventListener('mouseout', () => {
+      res.style.display = 'none'
+  })
+})
+
+function updateValue(e) {
+  log.textContent = e.target.value;
+}
+
+<% end %>

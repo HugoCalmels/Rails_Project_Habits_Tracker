@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   get 'about' => 'home#about'
   get 'how_it_works' => 'home#how_it_works'
   root to: "home#index"
+  resources :messages, only: [:new, :create]
   devise_for :users, :path_prefix => 'd'
-  resources :users, only: [:show, :index] do 
+  resources :users do 
     resources :cycles, param: :title, only: [:show, :index] do 
       get :reset
       resources :stats
@@ -12,7 +13,10 @@ Rails.application.routes.draw do
         resources :checkpoints
         
       end
-      resources :bad_habits
+      resources :bad_habits do
+        resources :checkpoints
+        
+      end
     end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

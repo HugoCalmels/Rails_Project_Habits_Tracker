@@ -1,0 +1,73 @@
+
+<div class="page">
+
+<div class="header-not-auth">
+<h1 class="page-main-header">Habits Tracker</h1>
+</div>
+<%= render partial: "elements/alert-messages.html.erb" %>
+<h2 class="page-header">Authentication</h2>
+
+<div class="small-wrapper">
+
+<div class="container">
+
+<div class="form-top">
+
+<div class="item-1">
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+ 
+  <% resource.errors.full_messages.each do |msg| %>
+    <div class="alert-messages-2">
+      <div class="alert-alert-2">
+        <%= msg %>
+        &nbsp;<span class="span-close-alert">&times;</span>
+      </div>
+    </div>
+  <%= javascript_pack_tag 'alert-messages2'%>
+  <% end %>
+
+
+  <div class="field">
+    <%= f.label :email, class: "labels-inputs-1"%><br/>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-inputs-1"  %>
+  </div>
+</div>
+
+<div class="item-2">
+  <div class="field">
+    <%= f.label :password, class: "labels-inputs-1" %><br/>
+    <%= f.password_field :password, autocomplete: "current-password", class: "form-inputs-1" %>
+  </div>
+  </div>
+
+  <div class="item-3">
+  <% if devise_mapping.rememberable? %>
+    <div class="field">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
+    </div>
+  <% end %>
+  </div>
+
+  </div>
+
+  <div class="form-bottom">
+
+
+  <div class="item-4">
+  <div class="actions">
+    <%= f.submit "Login", class: "login-btn"%>
+  </div>
+  </div>
+<% end %>
+
+<div class="item-5">
+<%= render "devise/shared/links" %>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>

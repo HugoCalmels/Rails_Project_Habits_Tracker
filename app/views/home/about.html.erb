@@ -1,4 +1,5 @@
 <%= render partial: "elements/header-not-auth.html.erb" %>
+<%= render partial: "elements/alert-messages.html.erb" %>
 <h2 class="page-header"> About</h2>
 
 <div class="step">
@@ -8,23 +9,25 @@
   <div class="step-grid-item-2">
   <h4>What is an Habit Tracker ?</h4>
   <p>As the name says it will track your habits, the goal is to assist your habits management.</p>
-  <p>At the end you'll be rewarded with fantastic statistics about your habits achievements</p>
+  <p>Easy to understand, it offers you to check your habits and display it into data.</p>
+  <p>At the end you'll be rewarded with statistics about your habits achievements.</p>
+  <p></p>
   </div>
 </div>
 <div class="step">
 <div class="step-grid-item-1">
-  <div class="video-link">
-  <%= youtube_video "http://www.youtube.com/embed/PZ7lDrwYdZc" %>
+ 
+  <%= render partial: "elements/svgs/book.html.erb" %>
   
-  </div>
+
   </div>
   <div class="step-grid-item-2">
   <h4>Why an Habit Tracker ?</h4>
-  <p>While I was initially going for a To-do List, I found out a video about Habits, this is where it started.</p>
+  <p>While I was initially going for a To-do List, I found this <strong><a href="https://www.youtube.com/watch?v=PZ7lDrwYdZc">video</a></strong> about Habits, this is where it started.</p>
   <p>Searched for good PC habit trackers applications and couldn't find one that fited me.</p>
   <p>Also it was a bit challenging for me to do, and as I often say <i>"no challenge = no fun"</i>.</p>
-  <p>The original idea comes from a book, here is the link <a href="https://jamesclear.com/atomic-habits">"Atomic Habits by James Clear"</a></p>
-    </div>
+  <p>The original idea comes from a book, here is the link <strong><a href="https://jamesclear.com/atomic-habits">"Atomic Habits by James Clear"</a></strong>.</p>
+  </div>
 </div>
 
 <div class="step">
@@ -33,9 +36,9 @@
   </div>
   <div class="step-grid-item-2">
   <h4>About me</h4>
-  <p>I started learning Webdevelopment and programming in april 2021, 9 months ago</p>
-  <p>Im now working with React & Javascript</p>
-  <p>But, I wanted to definitely confirm both my backend & frontend skills on Ruby on Rails, CSS & Javascript</p>
+  <p>I started learning Webdevelopment and programming in april 2021, 9 months ago.</p>
+  <p>And, wanted to confirm my skills on RoR, CSS & Javascript.</p>
+  <p>But today, Im focused and dedicated on React, Im not planning to do another project with RoR anytime soon.</p>
   </div>
 </div>
 
@@ -45,9 +48,10 @@
   </div>
   <div class="step-grid-item-2">
   <h4>Technologies used</h4>
-  <p>One of the goals were to deliver the project in less than 2 weeks, using less libraries as possible</p>
-  <p>The only librarie I used is Devise (for authentication), there is not any piece of Bootstrap around, just pure CSS/JS/SVG.</p>
-  <p>Here is the <a href="https://github.com/HugoCalmels/Rails_Project_Habits_Tracker">Github</a>.</p>
+  <p>One of the goals were to deliver the project in less than 2x weeks, using less libraries as possible</p>
+  <p>The only library I used is Devise (for authentication), there is no Bootstrap around or any other library.
+  It finally took me 3x weeks to make everything, 1x extra week because stats were not initially planned but looked really good.</p>
+  <p>Here is the <a href="https://github.com/HugoCalmels/Rails_Project_Habits_Tracker"><strong>Github</strong></a>.</p>
   </div>
 </div>
 
@@ -57,7 +61,29 @@
   </div>
   <div class="step-grid-item-2">
   <h4>About you</h4>
-  <p> Any Feedback, any suggestion ? <strong> make a form email to me page here </strong></p>
+  <p> Any Feedback, any suggestion ? </p>
+  <br />
+  <div class="messages-wrapper">
+ 
+  <%= form_for Message.new, url: messages_path, method: 'POST' do |form|%>
+    <div class="messages-grid">
+    <div class="message-item">
+    <%= form.label :name, class: "labels-inputs-name"%><br/>
+  <%= form.text_field :name, class: "form-inputs-name" %>
+  </div>
+  <div class="message-item">
+    <%= form.label :content, class: "labels-inputs-area"%><br/>
+  <%= form.text_area :content, class: "form-inputs-area" %>
+  </div>
+  </div>
+  <div class="message-submit">
+    <%= form.submit "Send", class: "btn-message"%>
+    </div>
+    </div>
+    <% end %>
+  
+</div>
+
   </div>
 </div>
 

@@ -3,6 +3,8 @@ module ApplicationHelper
     render :partial => 'elements/youtube', :locals => { :url => url }
   end 
 
+  
+
 
   def containsFirstDayOfTheMonth(week) 
 
@@ -35,12 +37,22 @@ module ApplicationHelper
 
   def test(array)
     
+    
+    array.select.with_index do |el, i|
+      i != array.index(el)
+     end
+     puts array
+
+    result = []
+
     array.each do |el|
+      if 
       puts el.date
       puts el.id
       puts "success" + el.cycle_result_success.to_s
       puts "failed" + el.cycle_result_failed.to_s
     end
+  end
   end
 
 

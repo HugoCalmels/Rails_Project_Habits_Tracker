@@ -3,13 +3,11 @@ class HomeController < ApplicationController
     if user_signed_in? 
       redirect_to user_cycles_path(current_user.id)
     else
-      redirect_to how_it_works_path, warning: "You need to login first"
+      redirect_to new_user_session_path
     end
-
   end
 
   def how_it_works 
-
   end
 
   def about
@@ -22,4 +20,5 @@ class HomeController < ApplicationController
       redirect_to how_it_works_path
     end
   end
+  
 end

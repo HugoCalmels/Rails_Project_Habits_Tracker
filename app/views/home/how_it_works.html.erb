@@ -1,6 +1,6 @@
 <%= render partial: "elements/header-not-auth.html.erb" %>
-<div class="page">
-<h2 class="page-header"> HOW IT WORKS </h2>
+<%= render partial: "elements/alert-messages.html.erb" %>
+<h2 class="page-header"> How it works </h2>
 
 <div class="step">
   <div class="step-grid-item-1">
@@ -8,9 +8,9 @@
   </div>
   <div class="step-grid-item-2">
   <h4>Step 1 : Login</h4>
-  <p>The entire point of this application is to you make you (the user) interact with the database</p>
-  <p>Once you get logged in you can use the application</p>
-  <p>It also provides security to your data</p>
+  <p>The entire point of this application is to you make you (the user) interact with the database.</p>
+  <p>Once you get logged in you can use the application.</p>
+  <p>This way it provides security both and data for you</p>
   </div>
 </div>
 
@@ -21,8 +21,8 @@
   <div class="step-grid-item-2">
   <h4>Step 2 : Cycles</h4>
   <p> Well .. some habits has to be done daily, like eating three vegetables a day for example.</p>
-  <p> Some others has to be done weekly, like running because you dont wanna run everyday .. maybe 3 checkpoints a week .. you see the idea ?</p>
-  <p> Finally, others habits might be done monthly, like 1 or 2 checkpoint(s) a month to run a marathon.</p>
+  <p> Then .. some others has to be done weekly, like running because you dont wanna run everyday .. maybe 3 checkpoints a week .. you see the idea ?</p>
+  <p> Finally .. others habits might be done monthly, like 1 or 2 checkpoint(s) a month to run a marathon.</p>
   </div>
 
 </div>
@@ -33,10 +33,10 @@
   </div>
   <div class="step-grid-item-2">
   <h4>Step 3 : Habits</h4>
-  <p>There are good habits and bad habits, one has to be picked</p>
+  <p>There are good habits and bad habits, one has to be picked.</p>
   <p>Bad habits are traited the opposite from good habits, in term of results.</p>
-  <p>For example if you've burnt 15 cigarettes in one day, and checked all 15/20 of the 20 you planned in the application </p>
-  <p>Then we will give you a 25% success, when it would have been 75% success for a good habit.</p>
+  <p>For example if you've burnt 15 cigarettes in one day, and checked all 15/20 of the 20 checkpoints you planned in the application.
+   Then we will give you a 25% success, when it would have been 75% success for a good habit.</p>
   </div>
 </div>
 
@@ -46,9 +46,10 @@
   </div>
   <div class="step-grid-item-2">
   <h4>Step 4 : Checkpoints</h4>
-  <p> Checkpoints succeeded are reset every cycle of your choice(daily/monthly/weekly)</p>
+  <p> Checkpoints succeeded are reset every cycle of your choice(daily/monthly/weekly).</p>
   <p> Checkpoints announced stays the same after every reset.</p>
-  <p> The results will be saved in the database, in order to see your results short and long term</p>
+  <p> You can put your account into sleep mode : your checkpoints will stop being recorded.</p>
+  <p> Checkpoints results are transformed to data per cycle, in order to display stats.</p>
   </div>
   </div>
 
@@ -58,14 +59,13 @@
   </div>
   <div class="step-grid-item-2">
   <h4>Step 5 : Statistics </h4>
-  <p> We will save datas such as :</p>
+  <p> We will save data such as :</p>
   <li> your email, in case you forgot your password </li>
-  <li> your habits name </li>
+  <li> your habits name, for stats purpose </li>
   <li> the habits you successed </li>
   <li> the habits you failed </li></p>
-  <p>Then you'll have access to the results, there is no commercial purpose here.
+  <p>This application has no commercial purpose, nothing will be shared</p>
   </div>
 </div>
 
-</div>
 

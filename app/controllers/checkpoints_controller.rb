@@ -1,48 +1,67 @@
 class CheckpointsController < ApplicationController
-  before_action :find_good_habit
+
 
   def create
-    puts "mmMMMMMmmmMMm"
-    puts params
-    puts "mmMMMMMmmmMMm"
-    @good_habit.checkpoints.create(good_habit_id: current_user.id)
-    ## redirect_to user_cycle_good_habits_path(params[:user_id], params[:cycle_title])
+
+    if params[:controller] == 'good_habits' 
+      @good_habit.checkpoints.create(good_habit_id: current_user.id)
+      puts "test1"
+      puts "test1"
+    elsif params[:controller] == 'bad_habits'
+      @bad_habit.checkpoints.create(bad_habit_id: current_user.id)
+      puts "test2"
+      puts "test2"
+    end
   end
 
   def update
-  
-    @checkpoint = Checkpoint.find(params[:id])
+    if !params[:good_habit_id].nil?
+      find_good_habit
+    elsif !params[:bad_habit_id].nil?
+      find_bad_habit
+    end
     @checkpoint = Checkpoint.find(params[:id])
     if @checkpoint.checked == false 
       @checkpoint.checked = true
     elsif @checkpoint.checked == true
       @checkpoint.checked = false
     end
-
-    @checkpoint.save!
-
+    @checkpoint.save
+    if !params[:good_habit_id].nil? 
+      puts "MMMMMMMMMMMMMMMMMMMMMMMM"
+      puts "MMMMMMMMMMMMMMMMMMMMMMMM"
+      puts "MMMMMMMMMMMMMMMMMMMMMMMM"
+      puts "MMMMMMMMMMMMMMMMMMMMMMMM"
+      puts "MMMMMMMMMMMMMMMMMMMMMMMM"
+      puts "MMMMMMMMMMMMMMMMMMMMMMMM"
+      puts "MMMMMMMMMMMMMMMMMMMMMMMM"
+      puts "MMMMMMMMMMMMMMMMMMMMMMMM"
     respond_to do |format|
       format.html { redirect_to user_cycle_good_habits_path(params[:user_id], params[:cycle_title]) }
       format.js { }
     end
-
-    ## redirect_to user_cycle_good_habits_path(params[:user_id], params[:cycle_title])
+  elsif !params[:bad_habit_id].nil?
+      respond_to do |format|
+        format.html { redirect_to user_cycle_bad_habits_path(params[:user_id], params[:cycle_title]) }
+        format.js { }
+    end
+  end
+ 
   end
 
   def destroy
-    puts "mmMMMMMmmmMMm"
     puts params[:id]
-    puts "mmMMMMMmmmMMm"
     @checkpoint =  @good_habit.checkpoints.find_by(id: params[:id])
     @checkpoint.destroy
     redirect_to user_cycle_good_habits_path(params[:user_id], params[:cycle_title])
   end
   
   private
+  def find_bad_habit
+    @bad_habit = BadHabit.find(params[:bad_habit_id])
+  end
+
   def find_good_habit
-    puts "mmMMMMMmmmMMm"
-    puts params
-    puts "mmMMMMMmmmMMm"
     @good_habit = GoodHabit.find(params[:good_habit_id])
   end
 

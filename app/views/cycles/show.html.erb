@@ -2,13 +2,40 @@
 <div class="header-not-auth">
 <h1 class="page-main-header">Select an habit</h1>
 </div>
+<%= render partial: "elements/alert-messages.html.erb" %>
+<div class="habits-wrapper">
 <h2 class="page-header">Cycle : <%=@cycle.title%></h2>
 
 <div class="user-container">
   <div class="user-habit-selection">
-    <%= link_to "good habit", user_cycle_good_habits_path(@user.id, @cycle.title), class:'cycles-list-a' %>
-    <%= link_to "bad habit", user_cycle_bad_habits_path(@user.id, @cycle.title), class:'cycles-list-a'  %>
+
+  <div class="cycle-container-2">
+  <div class="cycle-button">
+  <%= link_to "good habit", user_cycle_good_habits_path(@user.id, @cycle.title), class:'cycles-list-a' %>
   </div>
+  <div class="cycle-body-2">
+        <p>To become better ..</p>
+      </div>
+  </div>
+
+  <div class="cycle-container-2">
+  <div class="cycle-button">
+  <%= link_to "bad habit", user_cycle_bad_habits_path(@user.id, @cycle.title), class:'cycles-list-a' %>
+  </div>
+  <div class="cycle-body-2">
+    <p>To become less bad ..</p>
+      </div>
+
+  </div>
+</div>
+
+<div class="informations">
+
+<%= render partial: "elements/svgs/moon-2.html.erb" %>
+<i class="spe-i-2"> : if you happen to see this icon, it means your account is on sleep mode, and your stats will stop being recorded</i>
+
+</div>
+
 </div>
 
 

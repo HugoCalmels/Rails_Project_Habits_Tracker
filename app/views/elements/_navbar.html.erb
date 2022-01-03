@@ -3,15 +3,28 @@
 <nav class="navbar-custom">
 
 <%= link_to "Get started !", root_path, class: 'navbar-title'%>
-
+<div class="sub-menu-left">
+  <% if user_signed_in? %>
+  <%if current_user.state == 'active' %>
+      <%= render partial: "elements/svgs/sun.html.erb" %>
+      <%elsif current_user.state = 'unactive' %>
+      <%= render partial: "elements/svgs/moon.html.erb" %>
+      <% end %>
+       <%= render partial: "elements/sleep-mode.html.erb" %>
+       <% end %>
+     
+  </div>
   <div class="navbar-menu">
   <div class="navbar-left-menu">
   <%= link_to 'How it works', how_it_works_path, class: 'navbar-link' %>
   <%= link_to 'About', about_path, class: 'navbar-link' %>
   </div>
+  
   <div class="navbar-right-menu">
     <% if user_signed_in? %>
+    <div class="navbar-right-submenu">
       <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'navbar-link' %> 
+      </div>
     <% else %>
       <%= link_to 'Login', new_user_session_path, class: 'navbar-link' %> 
     <% end %>
@@ -23,8 +36,8 @@
 </nav>
 <div class="list-hamburger">
     <ul>
-    <li><a class="bar"> How it works</a></li>
-    <li><a class="bar"> About</a></li>
+    <li><%= link_to 'How it works', how_it_works_path, class: 'bar' %></li>
+    <li><%= link_to 'About', about_path, class: 'bar' %></li>
       <% if user_signed_in? %>
         <li><%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'bar' %> </li>
       <% else %>
