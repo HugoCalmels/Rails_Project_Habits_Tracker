@@ -1,7 +1,8 @@
 
+<% if !@checkpoint.good_habit.nil? %>
 <% success = @checkpoint.good_habit.checkpoints.where(checked: true).count.to_f %>
 <% total = @checkpoint.good_habit.announced_checkpoints.to_i %>
-<% percentage = ((success/total)*100).round(2) %>
+<% percentage = ((success/total.to_f)*100).to_i %>
 <% left = total - success%>
 
 
@@ -9,3 +10,18 @@
 <div class="spe-cks"><%= image_tag("green_ck_3", :class => "spe-ck") %> <%= success.to_i%></div>
 <div class="spe-cks"><%= image_tag("red_ck_4", :class => "spe-ck") %> <%= left.to_i %></div>
 </div>
+
+<% elsif !@checkpoint.bad_habit.nil? %>
+
+<% success = @checkpoint.bad_habit.checkpoints.where(checked: true).count.to_f %>
+<% total = @checkpoint.bad_habit.announced_checkpoints.to_i %>
+<% percentage = 100 - ((success/total.to_f)*100).to_i %>
+<% left = total - success%>
+
+
+<div class="habit-days-<%= @checkpoint.bad_habit.id%>" id="habit-days">
+<div class="spe-cks"><%= image_tag("red_ck_4", :class => "spe-ck") %> <%= success.to_i%></div>
+<div class="spe-cks"><%= image_tag("green_ck_3", :class => "spe-ck") %> <%= left.to_i %></div>
+</div>
+
+<% end %>

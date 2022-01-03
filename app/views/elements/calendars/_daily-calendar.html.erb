@@ -1,5 +1,13 @@
 <div class="calendars-wrapper">
-<% @good_habits.reverse.each do |habit| %>
+
+<% if params[:format] == 'good_habit' %>
+<% habitSelection = @good_habits %>
+
+<% elsif params[:format] == 'bad_habit' %>
+<% habitSelection = @bad_habits %>
+<% end %>
+
+<% habitSelection.reverse.each do |habit| %>
 
   <div class="calendar-item">
     <div class="calendar-header">
@@ -52,7 +60,11 @@
               <% if el.date == day %>
               <% success = el.cycle_result_success.to_i %>
               <% total = el.cycle_result_failed.to_i + success %>
+              <% if params[:format] == 'good_habit' %>
               <% percentage = ((success/total.to_f)*100).to_i %>
+              <% elsif params[:format] == 'bad_habit' %>
+              <% percentage = 100 - ((success/total.to_f)*100).to_i %>
+              <% end %>
 
               <% if percentage == 0 && percentage < 16.67  %>
               <div class="calendar-day red" id="day" name="day">

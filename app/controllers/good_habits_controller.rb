@@ -61,7 +61,7 @@ class GoodHabitsController < ApplicationController
     @good_habit = GoodHabit.find(params[:id])
     if @good_habit.title.capitalize == params[:good_habit][:title] ||@good_habit.title == params[:good_habit][:title]
       @good_habit.destroy
-      redirect_to user_cycle_good_habits_path(params[:user_id], params[:cycle_title]) , notice: "Habit updated !"
+      redirect_to user_cycle_good_habits_path(params[:user_id], params[:cycle_title]) , notice: "Habit destroyed !"
       return
     else
       redirect_to user_cycle_good_habits_path(params[:user_id], params[:cycle_title]), alert: "Error : habit title do not match"

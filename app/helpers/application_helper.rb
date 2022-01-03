@@ -3,6 +3,8 @@ module ApplicationHelper
     render :partial => 'elements/youtube', :locals => { :url => url }
   end 
 
+  
+
 
   def containsFirstDayOfTheMonth(week) 
 

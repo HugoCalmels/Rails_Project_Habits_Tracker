@@ -1,14 +1,212 @@
+<%= render partial: "elements/header-auth.html.erb" %>
+<%= render partial: "elements/alert-messages.html.erb" %>
 
-<h1>BadHabits#index</h1>
-<p>Find me in app/views/good_habits/index.html.erb</p>
 
-<% @bad_habits.each do |habit| %>
-  <li>
-  <%= habit.title %>
-  <%= habit.checkpoints %>
-  <%= habit.cycle.title %>
-  <%= habit.user.name %>
-  </li>
+<div class="page">
+<div class="div-page-header">
+<h2 class="page-header"><%=@cycle.title.capitalize%> bad habits</h2>
+<p>Create and open one habit to complete your <%=@cycle.title%> tasks.<br />
+<i class="spe-i">Successed checkpoints will be reset <%=@cycle.title%>, announced checkpoints will stay the same</i></p>
+</div>
 
+
+
+<% if @bad_habits.count > 0 %>
+
+  <div class="habits-grid-container">
+
+  <% @bad_habits.reverse.each do |habit| %>
+    <% menuCondition = 'show' %>
+
+    <div class="habit-grid" data-hover-target="#modal<%= habit.id%>">
+      <div class="modal" id="modal<%= habit.id%>"> 
+        <div class="modal-header">
+          <div class="modal-header-title"> 
+            <h5><%= habit.title.capitalize %></h5>
+          </div>
+        <div class="modal-menu">
+          <div class="gh-edit"><%= render partial: "elements/edit.html.erb" %></div>
+          <div class="gh-delete"><%= render partial: "elements/delete.html.erb" %></div>
+          <button data-close-button class="close-btn"><%= render partial: "elements/close.html.erb" %></button>
+        </div>
+      </div>
+      <div class="modal-body">
+
+
+      <div class="edit-habit">
+        
+        <%= form_for habit, url: user_cycle_bad_habit_path(@user.id, @cycle.title, habit.id), method: "PUT" do |form|%>
+        <%= form.label :habit_title, class: "labels-inputs-1" %><br/>
+        <%= form.text_field :title, placeholder: "title", class: "form-inputs-1" %><br/>
+        <%= form.label :announced_checkpoints, class: "labels-inputs-1" %><br/>
+        <%= form.text_field :announced_checkpoints, class: "form-inputs-3" %><br/><br/>
+        <%= form.submit 'Update', class:"login-btn-3"%><br/>
+        <% end %>
+      </div>
+
+
+      <div class="special-checkboxes">
+        <% habit.checkpoints.sort {|a,b| a.id <=> b.id}.each do|checkpoint| %>
+          <div class="checkboxe-element">
+            <%= form_for habit, url: user_cycle_bad_habit_checkpoint_path(@user.id, @cycle.title, habit.id, checkpoint.id), method: "PUT", remote: true do |form|%>
+              <div class="checkpoint-data-<%= checkpoint.id %>" id="checkpoint">
+                <% if checkpoint.checked == false %>
+                  <%= form.submit "Submit", :type => :image, :src => image_path("green_ck_3.png"), class: 'btn-submit-danger inverse' %>
+                <% elsif checkpoint.checked == true %>
+                  <%= form.submit "Submit", :type => :image, :src => image_path("red_ck_3.png"), class: 'btn-submit-success inverse' %>
+                <% end %>
+              </div >
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="delete-habit">
+      <%= form_for habit, url: user_cycle_bad_habit_path(@user.id, @cycle.title, habit.id), method: "DELETE" do |form|%>
+        <i>Confirm deletation by entering the habit title</i><br/>
+        <%= form.label :habit_title, class: "labels-inputs-1" %><br/>
+        <%= form.text_field :title, :value => "" , class: "form-inputs-1"%><br/><br/>
+        <%= form.submit 'Delete', class:"login-btn-3" %><br/>
+        <% end %>
+        </div>
+
+  </div>
+</div>
+
+<button  class="custom-model-button" data-modal-target="#modal<%= habit.id%>">
+
+  <div class="habit-wrapper">
+    <div class="habit-header">
+    
+      <h4><%= habit.title.capitalize %></h4>
+    
+    </div>
+    <div class="spe-habit-days-<%= habit.id%>"id="spe-habit-days">
+    <div class="habit-days-<%= habit.id%>" id="habit-days">
+    
+    <% success = habit.checkpoints.where(checked: true).count.to_f %>
+  <% total = habit.announced_checkpoints.to_i %>
+  <% percentage = 100 - ((success/total)*100).round(2) %>
+  <% left = total - success%>
+  <div class="spe-cks"><%= image_tag("red_ck_4", :class => "spe-ck") %> <%= success.to_i%></div>
+  <div class="spe-cks"><%= image_tag("green_ck_3", :class => "spe-ck") %> <%= left.to_i %></div>
+    </div>
+        </div>
+   
+
+    <div class="infos-wrapper-<%= habit.id%>" id="infos-wrapper">
+
+    <div class="invis-percentages <%= habit.id%>" id="invis-percentages"><%= percentage.to_i%> %</div>
+
+    <div class="habit-rigth-col-<%= habit.id%>-grid" id="achievements-grid-wrapper" name"habit-percentages">
+   
+
+<% if percentage == 0 && percentage < 16.67  %>
+<div class="achievement-grid red"></div>
+<div class="achievement-grid gray"></div>
+<div class="achievement-grid gray"></div>
+<div class="achievement-grid gray"></div>
+<div class="achievement-grid gray"></div>
+<div class="achievement-grid gray"></div>
+<div class="achievement-grid gray"></div>
+<div class="achievement-grid gray"></div>
+<% elsif percentage >= 0 && percentage < 16.67 %>
+<div class="achievement-grid orange"></div>
+<div class="achievement-grid orange"></div>
+<div class="achievement-grid gray"></div>
+<div class="achievement-grid gray"></div>
+<div class="achievement-grid gray"></div>
+<div class="achievement-grid gray"></div>
+<div class="achievement-grid gray"></div>
+<div class="achievement-grid gray"></div>
+<% elsif percentage >= 16.67 && percentage < 33.33 %>
+  <div class="achievement-grid orange"></div>
+  <div class="achievement-grid orange"></div>
+  <div class="achievement-grid orange"></div>
+  <div class="achievement-grid gray"></div>
+  <div class="achievement-grid gray"></div>
+  <div class="achievement-grid gray"></div>
+  <div class="achievement-grid gray"></div>
+  <div class="achievement-grid gray"></div>
+<% elsif percentage >= 33.33 && percentage < 50 %>
+<div class="achievement-grid green1"></div>
+  <div class="achievement-grid green1"></div>
+  <div class="achievement-grid green1"></div>
+  <div class="achievement-grid green1"></div>
+  <div class="achievement-grid gray"></div>
+  <div class="achievement-grid gray"></div>
+  <div class="achievement-grid gray"></div>
+  <div class="achievement-grid gray"></div>
+<% elsif percentage >= 50 && percentage < 66.67 %>
+<div class="achievement-grid green1"></div>
+  <div class="achievement-grid green1"></div>
+  <div class="achievement-grid green1"></div>
+  <div class="achievement-grid green1"></div>
+  <div class="achievement-grid green1"></div>
+  <div class="achievement-grid gray"></div>
+  <div class="achievement-grid gray"></div>
+  <div class="achievement-grid gray"></div>
+<% elsif percentage >= 66.67 && percentage < 83.33 %>
+<div class="achievement-grid green2"></div>
+  <div class="achievement-grid green2"></div>
+  <div class="achievement-grid green2"></div>
+  <div class="achievement-grid green2"></div>
+  <div class="achievement-grid green2"></div>
+  <div class="achievement-grid green2"></div>
+  <div class="achievement-grid gray"></div>
+  <div class="achievement-grid gray"></div>
+<% elsif percentage >= 83.33 && percentage < 100 %>
+<div class="achievement-grid green2"></div>
+  <div class="achievement-grid green2"></div>
+  <div class="achievement-grid green2"></div>
+  <div class="achievement-grid green2"></div>
+  <div class="achievement-grid green2"></div>
+  <div class="achievement-grid green2"></div>
+  <div class="achievement-grid green2"></div>
+  <div class="achievement-grid gray"></div>
+<% elsif percentage == 100.0 %>
+<div class="achievement-grid green3"></div>
+  <div class="achievement-grid green3"></div>
+  <div class="achievement-grid green3"></div>
+  <div class="achievement-grid green3"></div>
+  <div class="achievement-grid green3"></div>
+  <div class="achievement-grid green3"></div>
+  <div class="achievement-grid green3"></div>
+  <div class="achievement-grid green3"></div>
   
 <% end %>
+    </div>
+    <% created_at = Date.parse(habit.created_at.to_s) %>
+    <% date_now = Date.current.to_date %>
+    <% difference = date_now.mjd - created_at.mjd %>
+    <div class="informations-3"><i>
+    created <%= difference %>
+    <% if difference == 0 %>
+      day ago
+    <% else %>
+      days ago
+    <% end %>
+    </i>
+    </div>
+
+    
+  </div>
+  </div>
+  </button>
+
+</div>
+<% end %>
+<% else %> 
+  <div class="beginner-friendly">
+        <i>Click <strong><%= link_to 'here', new_user_cycle_bad_habit_path(@user.id, @cycle.title) %></strong> to create your first <%=@cycle.title%> habit</i>
+  </div>
+<% end %>
+
+
+
+</div>
+<div id="overlay"></div>
+</div>
+
+
+<%= javascript_pack_tag 'index_gh'%>

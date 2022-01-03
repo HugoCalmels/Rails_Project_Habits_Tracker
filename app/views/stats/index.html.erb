@@ -3,6 +3,7 @@
 <div class="page">
   <div class="div-page-header">
     <h2 class="page-header"><%=@cycle.title.capitalize%> stats</h2>
+    <br />
     <% if @cycle.title == "daily" %>
     <p>Your stats will be updated <%= time_tag(Date.today, :format=>"on : #{Date.today.day.ordinalize} %b") %></p>
     <% elsif @cycle.title == "weekly" %>
@@ -12,7 +13,10 @@
     <% end %>
     </div>
     </div>   </div>
+<br />
 
+
+<% if params[:format] == 'good_habit' %>
 <% if @good_habits.count > 0 %>
 
 <% if @cycle.title == "daily" %>
@@ -29,4 +33,23 @@
 </div>
 <% end %>
 
+
+
+<% elsif params[:format] == 'bad_habit' %>
+<% if @bad_habits.count > 0 %>
+
+<% if @cycle.title == "daily" %>
+  <%= render partial: "elements/calendars/daily-calendar.html.erb" %>
+<% elsif @cycle.title == "weekly" %>
+<%= render partial: "elements/calendars/weekly-calendar.html.erb" %>
+<% elsif @cycle.title == "monthly" %>
+<%= render partial: "elements/calendars/monthly-calendar.html.erb" %>
+<% end %>
+
+<% else %>
+<div class="beginner-friendly">
+<i>You don't have any records yet..</i>
+</div>
+<% end %>
+<% end %>
 

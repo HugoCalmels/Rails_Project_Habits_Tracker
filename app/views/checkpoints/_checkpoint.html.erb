@@ -1,10 +1,17 @@
+<% if !@checkpoint.good_habit.nil? %>
 
 <% if checkpoint.checked == false %>
-  
 <input type="image" name="commit" value="Submit" src="/assets/red_ck_3-41be11a0889ed8d1672fb79720ed28f9e1ff97c2a0738bdaefb340ab09a4ac59.png" class="btn-submit-danger" data-disable-with="Submit">
-   
-      <% elsif checkpoint.checked == true %>
+<% elsif checkpoint.checked == true %>
+<input type="image" name="commit" value="Submit" src="/assets/green_ck_3-62e922a95f0febb7f64aad93b0c7362c9856e4ee97b8bd82d6b1f381df22e085.png" class="btn-submit-success" data-disable-with="Submit">
+<% end %>
 
-      <input type="image" name="commit" value="Submit" src="/assets/green_ck_3-62e922a95f0febb7f64aad93b0c7362c9856e4ee97b8bd82d6b1f381df22e085.png" class="btn-submit-success" data-disable-with="Submit">
-   
-      <% end %>
+<% elsif !@checkpoint.bad_habit.nil? %>
+
+<% if checkpoint.checked == true %>
+<input type="image" name="commit" value="Submit" src="/assets/red_ck_3-41be11a0889ed8d1672fb79720ed28f9e1ff97c2a0738bdaefb340ab09a4ac59.png" class="btn-submit-danger" data-disable-with="Submit">
+<% elsif checkpoint.checked == false %>
+<input type="image" name="commit" value="Submit" src="/assets/green_ck_3-62e922a95f0febb7f64aad93b0c7362c9856e4ee97b8bd82d6b1f381df22e085.png" class="btn-submit-success" data-disable-with="Submit">
+<% end %>
+
+<% end %>
