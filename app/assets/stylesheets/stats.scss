@@ -134,7 +134,7 @@
   display: flex;
   flex-direction: column;
   justify-self: center;
-
+  position :relative;
   @media (min-width:0px){
 
     transform: translateX(-800px);
@@ -182,8 +182,13 @@
   margin-bottom: 5px;
   margin-top: 0;
 
+
 }
 
 #week-invis {
   width: 300px;
+}
+
+.p-spe {
+  margin-bottom: 50px;
 }

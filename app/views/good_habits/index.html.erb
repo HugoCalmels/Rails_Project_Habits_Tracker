@@ -63,7 +63,7 @@
 
       <div class="delete-habit">
       <%= form_for habit, url: user_cycle_good_habit_path(@user.id, @cycle.title, habit.id), method: "DELETE" do |form|%>
-        <i>Confirm deletation by entering the habit name</i><br/>
+        <i>Confirm deletation by entering the habit title</i><br/>
         <%= form.label :habit_title, class: "labels-inputs-1" %><br/>
         <%= form.text_field :title, :value => "" , class: "form-inputs-1"%><br/><br/>
         <%= form.submit 'Delete', class:"login-btn-3" %><br/>
@@ -88,8 +88,12 @@
   <% total = habit.announced_checkpoints.to_i %>
   <% percentage = ((success/total)*100).round(2) %>
   <% left = total - success%>
+
+  
     <div class="spe-cks"><%= image_tag("green_ck_3", :class => "spe-ck") %> <%= success.to_i%></div>
     <div class="spe-cks"><%= image_tag("red_ck_4", :class => "spe-ck") %> <%= left.to_i %></div>
+
+
     </div>
         </div>
    

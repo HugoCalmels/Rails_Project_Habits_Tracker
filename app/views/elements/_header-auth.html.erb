@@ -2,38 +2,49 @@
 <div class="middle-navbar-grid">
   <div class="middle-navbar-cycle-seleciton">
   <div class="spe-header">
-      <p class='navbar-link-2''>Select cycle (<%= @cycle.title %>)</p>
+      <p class='navbar-link-2''>Navigation</p>
     </div>
     <div class="spe-body">
-    <ul>
-    <li><%= link_to "Daily", user_cycle_good_habits_path(@user.id, "daily"), class:"bar" %></li>
-    <li><%= link_to "Weekly", user_cycle_good_habits_path(@user.id, "weekly"), class:"bar" %></li>
-    <li><%= link_to "Monthly", user_cycle_good_habits_path(@user.id, "monthly"), class:"bar" %></li>
-    </ul>
+
+    <li><%= link_to "Daily good", user_cycle_good_habits_path(@user.id, "daily"), class:"bar" %></li>
+    <li><%= link_to "Weekly good", user_cycle_good_habits_path(@user.id, "weekly"), class:"bar" %></li>
+    <li><%= link_to "Monthly good", user_cycle_good_habits_path(@user.id, "monthly"), class:"bar" %></li>
+    <li><%= link_to "Daily bad", user_cycle_bad_habits_path(@user.id, "daily"), class:"bar" %></li>
+    <li><%= link_to "Weekly bad", user_cycle_bad_habits_path(@user.id, "weekly"), class:"bar" %></li>
+    <li><%= link_to "Monthly bad", user_cycle_bad_habits_path(@user.id, "monthly"), class:"bar" %></li>
+
     </div>
     </div>
     </div>
-    <div class="middle-navbar-grid">
-    <a>Select habit (bad)</a>
-  </div>
+
   <div class="middle-navbar-grid">
-  <% if !@good_habits.nil? %>
+  <% if params[:controller] == 'good_habits' || !@good_habits.nil? %>
   <%= link_to 'Create good habit', new_user_cycle_good_habit_path(@user.id, @cycle.title) ,  class: 'navbar-link-2'%>
-  <% else %>
-  <%= link_to 'Create bad habit', new_user_cycle_good_habit_path(@user.id, @cycle.title) ,  class: 'navbar-link-2'%>
+  <% elsif params[:controller] == 'bad_habits' || !@bad_habits.nil? %>
+  <%= link_to 'Create bad habit', new_user_cycle_bad_habit_path(@user.id, @cycle.title) ,  class: 'navbar-link-2'%>
   <% end %>
   </div>
 
 <% if @cycle.title == 'daily' || @cycle.title == 'weekly' %>
 <div class="middle-navbar-grid">
-      <%= form_for @cycle, url: user_cycle_reset_path(@user.id, @cycle.title), method: 'GET' do |form|%>
+      <% if params[:controller] == 'good_habits' || !@good_habits.nil? %>
+      <%= form_for @cycle, url: user_cycle_reset_path(@user.id, @cycle.title, 'good_habit'), method: 'GET' do |form|%>
       <%= form.submit 'Simulate',  class: 'navbar-link-2' %>
+      <% end %>
+      <% elsif params[:controller] == 'bad_habits' || !@bad_habits.nil? %>
+      <%= form_for @cycle, url: user_cycle_reset_path(@user.id, @cycle.title, 'bad_habit'), method: 'GET' do |form|%>
+        <%= form.submit 'Simulate',  class: 'navbar-link-2' %>
+        <% end %>
       <% end %>
     </div>
 <% end %>
     <div class="middle-navbar-grid">
-      <%= link_to 'Stats', user_cycle_stats_path(@user.id, @cycle.title),  class: 'navbar-link-2' %>
-    </div>
+    <% if params[:controller] == 'good_habits' || !@good_habits.nil? %>
+      <%= link_to 'Stats', user_cycle_stats_path(@user.id, @cycle.title, 'good_habit'),  class: 'navbar-link-2' %>
+      <% elsif params[:controller] == 'bad_habits' || !@bad_habits.nil? %>
+      <%= link_to 'Stats', user_cycle_stats_path(@user.id, @cycle.title, 'bad_habit'),  class: 'navbar-link-2' %>
+      <% end %>
+      </div>
    
   
     <div class="middle-navbar-grid">
@@ -51,25 +62,25 @@
 
     <div class="middle-navbar-cycle-seleciton-2">
   <div class="spe-header-2">
-      <p class='navbar-link-2''>Select cycle (<%= @cycle.title %>)</p>
+      <p class='navbar-link-2''>Navigation</p>
     </div>
     <div class="spe-body-2">
-    <ul>
-    <li><%= link_to "Daily", user_cycle_good_habits_path(@user.id, "daily"), class:"bar" %></li>
-    <li><%= link_to "Weekly", user_cycle_good_habits_path(@user.id, "weekly"), class:"bar" %></li>
-    <li><%= link_to "Monthly", user_cycle_good_habits_path(@user.id, "monthly"), class:"bar" %></li>
-    </ul>
+ 
+    <li><%= link_to "Daily good", user_cycle_good_habits_path(@user.id, "daily"), class:"bar" %></li>
+    <li><%= link_to "Weekly good", user_cycle_good_habits_path(@user.id, "weekly"), class:"bar" %></li>
+    <li><%= link_to "Monthly good", user_cycle_good_habits_path(@user.id, "monthly"), class:"bar" %></li>
+    <li><%= link_to "Daily bad", user_cycle_bad_habits_path(@user.id, "daily"), class:"bar" %></li>
+    <li><%= link_to "Weekly bad", user_cycle_bad_habits_path(@user.id, "weekly"), class:"bar" %></li>
+    <li><%= link_to "Monthly bad", user_cycle_bad_habits_path(@user.id, "monthly"), class:"bar" %></li>
+ 
     </div>
     </div>
     </div>
-    <div class="middle-navbar-grid-2">
-    <a>Select habit (bad)</a>
-  </div>
   <div class="middle-navbar-grid-2">
-  <% if !@good_habits.nil? %>
+  <% if params[:controller] == 'good_habits' %>
   <%= link_to 'Create good habit', new_user_cycle_good_habit_path(@user.id, @cycle.title) ,  class: 'navbar-link-2'%>
-  <% else %>
-  <%= link_to 'Create bad habit', new_user_cycle_good_habit_path(@user.id, @cycle.title) ,  class: 'navbar-link-2'%>
+  <% elsif params[:controller] == 'bad_habits' %>
+  <%= link_to 'Create bad habit', new_user_cycle_bad_habit_path(@user.id, @cycle.title) ,  class: 'navbar-link-2'%>
   <% end %>
   </div>
 

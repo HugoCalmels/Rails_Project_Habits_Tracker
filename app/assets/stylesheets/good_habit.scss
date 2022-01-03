@@ -158,6 +158,16 @@
 
 }
 
+.btn-submit-danger.inverse {
+  border: 5px solid rgb(1,193,70);
+
+}
+.btn-submit-danger.inverse:hover {
+  border: 5px solid rgba(67, 4, 70, 0.8);
+
+}
+
+
 
 
 .btn-submit-success {
@@ -175,6 +185,14 @@
   }
 }
 .btn-submit-success:hover {
+  border: 5px solid rgba(67, 4, 70, 0.8);
+
+}
+.btn-submit-success.inverse {
+  border: 5px solid rgb(238,45,40);
+
+}
+.btn-submit-success.inverse:hover {
   border: 5px solid rgba(67, 4, 70, 0.8);
 
 }

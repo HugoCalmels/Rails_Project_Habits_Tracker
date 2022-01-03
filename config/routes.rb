@@ -13,7 +13,10 @@ Rails.application.routes.draw do
         resources :checkpoints
         
       end
-      resources :bad_habits
+      resources :bad_habits do
+        resources :checkpoints
+        
+      end
     end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

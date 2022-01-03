@@ -1,0 +1,7 @@
+
+<%= form_for @bad_habit, url: edit_user_cycle_bad_habit_path(@user.id, @cycle.title, habit.id) do |form|%>
+
+  <%= form.text_field :title, placeholder: "title" %>
+  <%= form.text_field :announced_checkpoints %>
+  <%= form.submit %>
+<% end %>

@@ -1,0 +1,27 @@
+<div class="small-wrapper-2">
+
+<div class="container-spe">
+
+<%= form_for @bad_habit, url: user_cycle_bad_habits_path(@user.id, @cycle.title) do |form|%>
+  <div class="form-top-2">
+  <div class="item-1">
+  <%= form.label :habit_title, class: "labels-inputs-1"%>
+  <%= form.text_field :title, class: "form-inputs-2" %>
+  </div>
+  <div class="item-2">
+  <%= form.label :announced_checkpoints, class: "labels-inputs-1"%>
+  <%= form.text_field :announced_checkpoints, class: "form-inputs-3" %><br />
+  <br />
+  </div>
+  </div>
+  <div class="form-bottom">
+  <div class="item-3">
+  <%= form.submit "Create", class: "login-btn-3"%>
+  </div>
+  </div>
+<% end %>
+
+</div>
+
+</div>
+
