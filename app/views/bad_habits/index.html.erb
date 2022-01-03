@@ -51,9 +51,9 @@
             <%= form_for habit, url: user_cycle_bad_habit_checkpoint_path(@user.id, @cycle.title, habit.id, checkpoint.id), method: "PUT", remote: true do |form|%>
               <div class="checkpoint-data-<%= checkpoint.id %>" id="checkpoint">
                 <% if checkpoint.checked == false %>
-                  <%= form.submit "Submit", :type => :image, :src => image_path("green_ck_3.png"), class: 'btn-submit-danger inverse' %>
+                  <%= form.submit "Submit", :type => :image, :src => image_path("green_ck_3.png"), class: 'btn-submit-danger inverse' , alt: ''%>
                 <% elsif checkpoint.checked == true %>
-                  <%= form.submit "Submit", :type => :image, :src => image_path("red_ck_3.png"), class: 'btn-submit-success inverse' %>
+                  <%= form.submit "Submit", :type => :image, :src => image_path("red_ck_3.png"), class: 'btn-submit-success inverse', alt: '' %>
                 <% end %>
               </div >
             <% end %>
@@ -88,8 +88,8 @@
   <% total = habit.announced_checkpoints.to_i %>
   <% percentage = 100 - ((success/total)*100).round(2) %>
   <% left = total - success%>
-  <div class="spe-cks"><%= image_tag("red_ck_4", :class => "spe-ck") %> <%= success.to_i%></div>
-  <div class="spe-cks"><%= image_tag("green_ck_3", :class => "spe-ck") %> <%= left.to_i %></div>
+  <div class="spe-cks"><%= image_tag("red_ck_4.png", :class => "spe-ck", alt: '') %> <%= success.to_i%></div>
+  <div class="spe-cks"><%= image_tag("green_ck_3.png", :class => "spe-ck", alt: '') %> <%= left.to_i %></div>
     </div>
         </div>
    
