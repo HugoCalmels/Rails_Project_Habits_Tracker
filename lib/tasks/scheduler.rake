@@ -57,8 +57,8 @@ namespace :scheduled_tasks do
   
 
     if (Date.today.strftime("%A") == "Monday")
-      if user.state == 'active'
       User.all.each do |user|
+        if user.state == 'active'
         user.good_habits.where(cycle_id: 2).each do |habit|
           cycle_success_total = 0
           cycle_failed_total = 0
@@ -114,8 +114,8 @@ namespace :scheduled_tasks do
 
 
     if (Date.today.strftime("%C") == "1")
-      if user.state == 'active'
       User.all.each do |user|
+        if user.state == 'active'
         user.good_habits.where(cycle_id: 3).each do |habit|
           cycle_success_total = 0
           cycle_failed_total = 0
