@@ -1,0 +1,33 @@
+<center><h2>Admin panel</h2></center>
+<%= render partial: "elements/alert-messages.html.erb" %>
+<hr />
+
+  <table>
+  <tr>
+    <th>id&nbsp;&nbsp;&nbsp;</th>
+    <th>email</th>
+    <th>checkpoints</th>
+    <th></th>
+  </tr>
+  <% @users.sort { |x, y| x.id <=> y.id }.each do |user| %>
+  <tr>
+    <td><%= user.id %>&nbsp;&nbsp;&nbsp;</td>
+    <td><%= user.email %></td>
+    <td><%= count_checkpoints(user)%></td>
+    <td>
+    <%= form_for user, url: user_path(user.id), :method => :'DELETE' do |form|%>
+      <%= form.submit "destroy"%>
+      <% end %>
+      </td>
+
+  </tr>
+  <% end %>
+</table>
+
+<hr />
+
+<% @messages.each do |msg| %>
+  <h5><%= msg.name %></h5>
+  <p><%= msg.content %></p>
+  <hr />
+  <% end %>

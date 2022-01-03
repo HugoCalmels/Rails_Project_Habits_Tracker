@@ -22,5 +22,26 @@ class UsersController < ApplicationController
       return
     end
   end
+
+  def admin
+    @user = User.find(params[:user_id])
+    if @user.is_admin == true
+    @users = User.all
+    @messages = Message.all
+    else
+      redirect_to root_path, alert: 'You must be an admin'
+    end
+  end
+
+
+  def destroy
+    @user = User.find(params[:id])
+  
+    if @user.destroy
+      redirect_to user_admin_path(current_user.id), notice: "User deleted."
+    else
+      redirect_to user_admin_path(current_user.id), alert: "User could not be deleted." 
+    end
+  end
   
 end

@@ -1,19 +1,5 @@
 
 
-<p> Want to put your account into sleep mode for vacations ? </p> 
 
-<p> on - off </p>
-
-<p><i> Checkpoints will not be reset until you switch back to day mode</i></p>
-
-<div class="sleep-mode-wrapper">
-<%= form_for(user_path(current_user.id), method: 'patch') do |form| %>
-  <%if current_user.state == 'active' %>
-  <%= form.submit 'sleep mode', class:'sleep-btn'%>
-  <% elsif current_user.state == 'unactive' %>
-  <%= form.submit 'awake mode', class:'awake-btn'%>
-  <%end %>
-<% end %>
-</div>
 
 

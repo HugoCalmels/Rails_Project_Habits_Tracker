@@ -2,7 +2,7 @@
 <div class="navbar-wrapper">
 <nav class="navbar-custom">
 
-<%= link_to "Get started !", root_path, class: 'navbar-title'%>
+<%= link_to "Get started !", index_path, class: 'navbar-title'%>
 <div class="sub-menu-left">
   <% if user_signed_in? %>
   <%if current_user.state == 'active' %>
