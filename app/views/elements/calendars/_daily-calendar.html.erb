@@ -2,9 +2,11 @@
 
 <% if params[:format] == 'good_habit' %>
 <% habitSelection = @good_habits %>
+<% name = 'good habits' %>
 
 <% elsif params[:format] == 'bad_habit' %>
 <% habitSelection = @bad_habits %>
+<% name = 'bad habits' %>
 <% end %>
 
 <% habitSelection.reverse.each do |habit| %>

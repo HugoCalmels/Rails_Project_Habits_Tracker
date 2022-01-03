@@ -1,16 +1,5 @@
 class StatsController < ApplicationController
   def index
-
-    puts "MMMMMMMMMMMMMMMMMMMMMMMMMMMMM"
-    puts "MMMMMMMMMMMMMMMMMMMMMMMMMMMMM"
-    puts "MMMMMMMMMMMMMMMMMMMMMMMMMMMMM"
-    puts params[:format]
-    puts params[:format]
-    puts params[:format]
-    puts "MMMMMMMMMMMMMMMMMMMMMMMMMMMMM"
-    puts "MMMMMMMMMMMMMMMMMMMMMMMMMMMMM"
-    puts "MMMMMMMMMMMMMMMMMMMMMMMMMMMMM"
-
     @cycle = Cycle.find_by(title: params[:cycle_title])
     @user = User.find(params[:user_id])
 

@@ -68,6 +68,8 @@ class GoodHabitsController < ApplicationController
     end
   end
 
+  
+
   private
   def good_habit_params
     params.require(:good_habit).permit(:title, :announced_checkpoints)

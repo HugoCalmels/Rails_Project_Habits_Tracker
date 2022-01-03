@@ -16,6 +16,7 @@
 <div class="item-1">
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
  
+  <% if resource.nil? %>
   <% resource.errors.full_messages.each do |msg| %>
     <div class="alert-messages-2">
       <div class="alert-alert-2">
@@ -24,6 +25,7 @@
       </div>
     </div>
   <%= javascript_pack_tag 'alert-messages2'%>
+  <% end %>
   <% end %>
 
 

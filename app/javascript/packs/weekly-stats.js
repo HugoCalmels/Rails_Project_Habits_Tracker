@@ -13,10 +13,12 @@ divDay.forEach(element =>
 
   function unhideDiv(event) {
     var res = event.target.querySelector('.day-invis');
+    console.log('in')
     res.style.opacity = 1;
   }
   
   function hideDiv(event) {
     var res = event.target.querySelector('.day-invis');
+    console.log('out')
     res.style.opacity = 0;
   }

@@ -3,7 +3,16 @@ module ApplicationHelper
     render :partial => 'elements/youtube', :locals => { :url => url }
   end 
 
-  
+  def count_checkpoints(user)
+    result = 0
+    user.good_habits.each do |gh|
+      result += gh.announced_checkpoints
+    end
+    user.bad_habits.each do |bh|
+      result += bh.announced_checkpoints
+    end
+    return result
+  end
 
 
   def containsFirstDayOfTheMonth(week) 
