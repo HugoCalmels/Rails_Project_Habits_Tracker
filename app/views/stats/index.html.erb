@@ -2,7 +2,13 @@
 <%= render partial: "elements/alert-messages.html.erb" %>
 <div class="page">
   <div class="div-page-header">
-    <h2 class="page-header"><%=@cycle.title.capitalize%> stats</h2>
+    <h2 class="page-header">
+    <% if params[:format] == 'good_habit' %>
+    <%=@cycle.title.capitalize%> good habits stats
+    <% elsif params[:format] == 'bad_habit' %>
+    <%=@cycle.title.capitalize%> bad habits stats
+    <% end %>
+    </h2>
     <br />
     <% if @cycle.title == "daily" %>
     <p>Your stats will be updated <%= time_tag(Date.today, :format=>"on : #{Date.today.day.ordinalize} %b") %></p>

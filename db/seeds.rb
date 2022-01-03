@@ -11,6 +11,14 @@ Cycle.destroy_all
 GoodHabit.destroy_all
 BadHabit.destroy_all
 
+a = User.create(
+  email: 'admin@google.com',
+  password: "123123",
+  password_confirmation: "123123"
+)
+a.is_admin = true
+a.save
+
 10.times do
   u = User.new(
     name: Faker::Name.first_name,

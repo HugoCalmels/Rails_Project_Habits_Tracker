@@ -29,11 +29,11 @@
 <div class="middle-navbar-grid">
       <% if params[:controller] == 'good_habits' || !@good_habits.nil? %>
       <%= form_for @cycle, url: user_cycle_reset_path(@user.id, @cycle.title, 'good_habit'), method: 'GET' do |form|%>
-      <%= form.submit 'Simulate',  class: 'navbar-link-2' %>
+      <%= form.submit 'Simulate',  class: 'navbar-link-2', data: { confirm: 'It will reset your checkpoints' }  %>
       <% end %>
       <% elsif params[:controller] == 'bad_habits' || !@bad_habits.nil? %>
       <%= form_for @cycle, url: user_cycle_reset_path(@user.id, @cycle.title, 'bad_habit'), method: 'GET' do |form|%>
-        <%= form.submit 'Simulate',  class: 'navbar-link-2' %>
+        <%= form.submit 'Simulate',  class: 'navbar-link-2', data: { confirm: 'It will reset your checkpoints' }  %>
         <% end %>
       <% end %>
     </div>
@@ -45,11 +45,16 @@
       <%= link_to 'Stats', user_cycle_stats_path(@user.id, @cycle.title, 'bad_habit'),  class: 'navbar-link-2' %>
       <% end %>
       </div>
-   
-  
+
     <div class="middle-navbar-grid">
     <%= link_to 'Back', :back,  class: 'navbar-link-2' %>
     </div>
+
+    <% if @user.is_admin == true %>
+      <div class="middle-navbar-grid">
+    <%= link_to 'Admin panel', user_admin_path(@user.id),  class: 'navbar-link-2' %>
+    </div>
+    <% end %>
   
 </nav>
 

@@ -2,15 +2,10 @@ class CheckpointsController < ApplicationController
 
 
   def create
-
     if params[:controller] == 'good_habits' 
       @good_habit.checkpoints.create(good_habit_id: current_user.id)
-      puts "test1"
-      puts "test1"
     elsif params[:controller] == 'bad_habits'
       @bad_habit.checkpoints.create(bad_habit_id: current_user.id)
-      puts "test2"
-      puts "test2"
     end
   end
 
@@ -28,14 +23,6 @@ class CheckpointsController < ApplicationController
     end
     @checkpoint.save
     if !params[:good_habit_id].nil? 
-      puts "MMMMMMMMMMMMMMMMMMMMMMMM"
-      puts "MMMMMMMMMMMMMMMMMMMMMMMM"
-      puts "MMMMMMMMMMMMMMMMMMMMMMMM"
-      puts "MMMMMMMMMMMMMMMMMMMMMMMM"
-      puts "MMMMMMMMMMMMMMMMMMMMMMMM"
-      puts "MMMMMMMMMMMMMMMMMMMMMMMM"
-      puts "MMMMMMMMMMMMMMMMMMMMMMMM"
-      puts "MMMMMMMMMMMMMMMMMMMMMMMM"
     respond_to do |format|
       format.html { redirect_to user_cycle_good_habits_path(params[:user_id], params[:cycle_title]) }
       format.js { }

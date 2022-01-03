@@ -14,11 +14,14 @@ class HomeController < ApplicationController
   end
 
   def redirect 
+    authenticate_user!
     if user_signed_in? 
       redirect_to user_cycles_path(current_user.id)
     else
       redirect_to how_it_works_path
     end
   end
+
+  
   
 end

@@ -1,5 +1,5 @@
 class CyclesController < ApplicationController
-  before_action :authenticate_user!, only: [:show, :index, :reset]
+  before_action :authenticate_user!, only: [:show, :index, :reset, :admin]
   def index
     if user_signed_in? 
       @cycles = Cycle.all
@@ -20,15 +20,9 @@ class CyclesController < ApplicationController
     end
   end
 
-  def reset
-    puts "AAAAAAAAAAAAAAAAAAAAAAAAAaA"
-    puts "MMMMMMMMMMMMMMMMMMMMMMMMMMM"
-    puts "MMMMMMMMMMMMMMMMMMMMMMMMMMM"
-    puts params
-    puts "MMMMMMMMMMMMMMMMMMMMMMMMMMM"
-    puts "MMMMMMMMMMMMMMMMMMMMMMMMMMM"
-    puts "AAAAAAAAAAAAAAAAAAAAAAAAAaA"
+  
 
+  def reset
     if params[:format] == 'good_habit'
 
     @cycle = Cycle.find_by(title: params[:cycle_title])
