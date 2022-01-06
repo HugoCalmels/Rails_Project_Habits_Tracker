@@ -15,7 +15,7 @@
     <% elsif @cycle.title == "weekly" %>
     <p>Your stats will be updated <%= ((DateTime.current.to_date)+7).beginning_of_week.strftime("%A %d %B") %> </p>
     <% elsif @cycle.title == "monthly" %>
-    <p>Your stats will be updated random monthly conditions.</p>
+    <p>Your stats will be updated <%= ((DateTime.current.to_date)+7).beginning_of_month.strftime("%A %d %B") %></p>
     <% end %>
     </div>
     </div>   </div>

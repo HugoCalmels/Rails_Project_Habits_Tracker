@@ -1,9 +1,10 @@
-to install on your machine :
+Habits Tracker 
 
-git clone : blablarepo
-bundle install
-bundle exec rails webpacker:install
-rails db:create
-rails db:migrate
-rails db:seed
-rails s
+to install locally :
+- bundle install
+- bundle exec rails webpacker:install
+- rails db:create db:migrate db:seed && rails s
+
+available online at :
+https://habits-tracker-plus.herokuapp.com/
+
