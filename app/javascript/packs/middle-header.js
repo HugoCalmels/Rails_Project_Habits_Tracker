@@ -55,7 +55,7 @@ selectionDiv2.addEventListener('click', (event) => {
   if (menuCondition2 == false) {
     res2.style.textDecoration = 'underline'
     res2.style.fontWeight = 'bold'
-    res.style.display = 'block'
+    res.style.display = 'flex'
     menuCondition2 = true
   } else if (menuCondition2 == true) {
     res2.style.textDecoration = 'none'

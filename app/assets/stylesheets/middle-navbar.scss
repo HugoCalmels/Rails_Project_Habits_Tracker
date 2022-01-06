@@ -90,7 +90,11 @@
  
   display: none;
   position: absolute;
-
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-self: center;
+  align-self: center;
   top:83px;
   background-image: linear-gradient(rgb(234, 229, 98), rgb(240, 232, 0));
   border-right: 2px solid rgb(67, 4, 70);
@@ -111,12 +115,13 @@
 }
 
 .spe-body-2 .bar {
-  margin-right: 25px;
-  margin-left: -15px;
   color: black;
   font-size: 15px;
   text-decoration:none; 
   font-family: "Prompt", serif;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-top: 2px;
   
 }
 .spe-body-2 .bar:hover {
