@@ -113,7 +113,7 @@ namespace :scheduled_tasks do
     end
 
 
-    if (Date.today.strftime("%C") == "1")
+    if (Date.today.day == 1)
       User.all.each do |user|
         if user.state == 'active'
         user.good_habits.where(cycle_id: 3).each do |habit|
