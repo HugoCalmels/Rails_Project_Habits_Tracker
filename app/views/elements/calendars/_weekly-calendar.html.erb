@@ -66,9 +66,11 @@
               <% percentage =  100 - ((success/total.to_f)*100).to_i %>
               <% failed = el.cycle_result_failed.to_i %>
 
-              <% if params[:format] == 'bad_habit' %>
-                <% percentage = 100 - percentage %>
-                <% success = failed %>
+              <% if params[:format] == 'good_habit' %>
+              <% percentage = ((success/total.to_f)*100).to_i %>
+              <% elsif params[:format] == 'bad_habit' %>
+      
+              <% percentage = 100 - ((success/total.to_f)*100).to_i %>
               <% end %>
               
               <% if week.include?(el.date) %>

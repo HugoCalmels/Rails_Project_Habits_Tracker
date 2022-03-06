@@ -66,7 +66,7 @@
               <% if params[:format] == 'good_habit' %>
               <% percentage = ((success/total.to_f)*100).to_i %>
               <% elsif params[:format] == 'bad_habit' %>
-              <% success = failed %>
+       
               <% percentage = 100 - ((success/total.to_f)*100).to_i %>
               <% end %>
 

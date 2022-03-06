@@ -32,6 +32,7 @@
     <div class="calendar-body">
 
     <% date_range.each_slice(7).with_index do |week, index| %>
+  
 
       <div class="calendar-week super">
 
@@ -49,24 +50,30 @@
       <% habit.calendar.stats.each do |data| %>
         <% arrayOfData << data %>
       <% end %>
-
-       
-	    <% week.each do |day| %>
+ 
      
-        <% if arrayOfData.count > 0 %>
-        
-         
+    
+   
+       
+ 
+
+          <% week.each do |day| %>
+ 
+    
+          <% if arrayOfData.count > 0  %>
           <% habit.calendar.stats.each do |el| %>
+          
+      
 
             <%  if habit.calendar.stats.reverse.uniq { |s| s.date }.reverse.find { |i| i.date.beginning_of_month == day.beginning_of_month}  %>
-              <% success = el.cycle_result_success.to_i %>
+              
+            <% success = el.cycle_result_success.to_i %>
               <% total = el.cycle_result_failed.to_i + success %>
               <% percentage =  100 - ((success/total.to_f)*100).to_i %>
               <% failed = el.cycle_result_failed.to_i %>
 
               <% if params[:format] == 'bad_habit' %>
               <% percentage = 100 - percentage %>
-              <% success = failed %>
               <% end %>
 
               <% if percentage == 0 && percentage < 16.67  %>
@@ -105,14 +112,14 @@
             <% else %>
             <div class="calendar-day"></div>
             <% end %>
-              <% end %>
-            <% else %>
+            <% end %>  
+  
+          
+          <% else %>
             <div class="calendar-day"></div>
-            <% end %>
-         
-      
-            
-      <% end %>
+          <% end %>
+          <% end %>
+   
       </div>
 
     <% end %>

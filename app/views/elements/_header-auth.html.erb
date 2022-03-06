@@ -25,7 +25,7 @@
   <% end %>
   </div>
 
-<% if @cycle.title == 'daily' || @cycle.title == 'weekly' %>
+<% if @cycle.title == 'daily' || @cycle.title == 'weekly' || @cycle.title == 'monthly'%>
 <div class="middle-navbar-grid">
       <% if params[:controller] == 'good_habits' || !@good_habits.nil? %>
       <%= form_for @cycle, url: user_cycle_reset_path(@user.id, @cycle.title, 'good_habit'), method: 'GET' do |form|%>
