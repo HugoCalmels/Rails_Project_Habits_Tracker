@@ -35,10 +35,12 @@
 }
 
 .calendar-day {
+
   background-color: rgb(160, 160, 160);
   border-radius: 2px;
   height: 13px;
   width: 13px;
+  z-index: 5;
 }
 
 .calendar-week.special {
@@ -101,6 +103,7 @@
   background-color: hsla(50, 33%, 25%, .50);
   opacity: 0;
   border: 2px solid rgb(67, 4, 70);
+  z-index: 3;
 }
 
 
