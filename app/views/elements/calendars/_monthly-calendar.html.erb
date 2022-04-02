@@ -45,29 +45,35 @@
         <div class="month-blank"></div>
       <% end %>
 
-      
-      <% arrayOfData = []%>
-      <% habit.calendar.stats.each do |data| %>
-        <% arrayOfData << data %>
-      <% end %>
- 
-     
-    
-   
-       
- 
-
-          <% week.each do |day| %>
- 
-    
-          <% if arrayOfData.count > 0  %>
-          <% habit.calendar.stats.each do |el| %>
+  
+          <% week.each.with_index do |day, indexBoucle| %>
+           
           
-      
 
-            <%  if habit.calendar.stats.reverse.uniq { |s| s.date }.reverse.find { |i| i.date.beginning_of_month == day.beginning_of_month}  %>
-              
-            <% success = el.cycle_result_success.to_i %>
+          <%  if habit.calendar.stats.reverse.uniq { |s| s.date }.reverse.find { |i| i.date.beginning_of_month == day.beginning_of_month}  %>
+            <% habit.calendar.stats.reverse.uniq.each do |el| %>
+              <% puts "/////////////////////////////////////////////////" %>
+          <% puts indexBoucle %>
+          <% habit.calendar.stats.reverse.each do |smth| %>
+            <% puts ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;" %>
+            <% puts ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;" %>
+            <% puts ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;" %>
+            <% puts ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;" %>
+            <% puts "stat.date" %>
+            <% puts smth.date %>
+            <% puts ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;" %>
+            <% puts "findMonth(week)" %>
+            <% puts findMonth(week) %>
+            <% puts ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;" %>
+            <% puts "day.beginning_of_month" %>
+            <% puts day.beginning_of_month %>
+            <% puts ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;" %>
+            <% puts ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;" %>
+            <% puts ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;" %>
+            <% puts ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;" %>
+          <% end %>
+          <% puts "////////////////////////////////////////////////" %>
+              <% success = el.cycle_result_success.to_i %>
               <% total = el.cycle_result_failed.to_i + success %>
               <% percentage =  100 - ((success/total.to_f)*100).to_i %>
               <% failed = el.cycle_result_failed.to_i %>
@@ -75,6 +81,7 @@
               <% if params[:format] == 'bad_habit' %>
               <% percentage = 100 - percentage %>
               <% end %>
+           
 
               <% if percentage == 0 && percentage < 16.67  %>
               <div class="calendar-day red" id="day" name="day">
@@ -109,15 +116,15 @@
                 <div class="day-invis" id="invis" name="invis" ><%= success %>/<%= total %> (<%=day.strftime("%B")%>)</div>
               </div>
               <% end %>
+              <% end %>
             <% else %>
             <div class="calendar-day"></div>
             <% end %>
-            <% end %>  
+       
+         
   
           
-          <% else %>
-            <div class="calendar-day"></div>
-          <% end %>
+  
           <% end %>
    
       </div>
