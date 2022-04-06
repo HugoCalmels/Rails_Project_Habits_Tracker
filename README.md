@@ -1,5 +1,10 @@
 # Habits Tracker 
 
+## Summary
+
+I started this project back in decembre 2021, I wanted to build a good & fast back-end application.
+At that time, I didn't knew much about CSS & JS. It also was a great oppurtiny to train those skills.
+There is no animations, the back-end is not perfect, but it is working and thats what matter the most.
 
 ## Libraries
 * Devise, connected to Gmail API for email validation
