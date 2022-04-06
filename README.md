@@ -2,12 +2,12 @@
 
 ## Summary
 
-I started this project back in decembre 2021, I wanted to build a good & fast back-end application.
+I started this project back in december 2021, I wanted to build a good & fast back-end application.
 At that time, I didn't knew much about CSS & JS. It also was a great oppurtiny to train those skills.
 There is no animations, the back-end is not perfect, but it is working and thats what matter the most.
 
 ## Libraries
-* Devise, connected to Gmail API for email validation
+* Devise, connected to Gmail API for email validation.
 
 ### Features
 
@@ -22,11 +22,11 @@ There is no animations, the back-end is not perfect, but it is working and thats
 * There is alerts popping for UX experience all along.
 * There is one admin, with a table for each user and his number of checkpoints ( there is not any checkpoint limit atm). The admin can destroy any user from the db.
 
-##  to install locally :
+## To install locally :
 - bundle install
 - bundle exec rails webpacker:install
 - rails db:create db:migrate db:seed && rails s
 
-##  available online at :
+## Available online at :
 https://habits-tracker-plus.herokuapp.com/
 
