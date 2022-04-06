@@ -1,13 +1,6 @@
 class HomeController < ApplicationController
   def index
     authenticate_user!
-    puts "DOES AM IN INDEX??"
-    puts "DOES AM IN INDEX??"
-    puts "DOES AM IN INDEX??"
-    puts "DOES AM IN INDEX??"
-    puts "DOES AM IN INDEX??"
-    puts "DOES AM IN INDEX??"
-    puts "DOES AM IN INDEX??"
 
     if user_signed_in? 
       redirect_to user_cycles_path(current_user.id)

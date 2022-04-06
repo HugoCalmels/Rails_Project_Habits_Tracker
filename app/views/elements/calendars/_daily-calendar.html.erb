@@ -62,43 +62,47 @@
               <% if el.date == day %>
               <% success = el.cycle_result_success.to_i %>
               <% total = el.cycle_result_failed.to_i + success %>
+              <% failed = el.cycle_result_failed.to_i %>
               <% if params[:format] == 'good_habit' %>
               <% percentage = ((success/total.to_f)*100).to_i %>
               <% elsif params[:format] == 'bad_habit' %>
+       
               <% percentage = 100 - ((success/total.to_f)*100).to_i %>
               <% end %>
 
+       
+
               <% if percentage == 0 && percentage < 16.67  %>
               <div class="calendar-day red" id="day" name="day">
-                <div class="day-invis" id="invis" name="invis" ><%= percentage%>% - on <%=day%></div>
+                <div class="day-invis" id="invis" name="invis" ><%= success %>/<%= total %> (<%=day%>)</div>
               </div>
               <% elsif percentage >= 0 && percentage < 16.67 %>
               <div class="calendar-day orange" id="day" name="day">
-                <div class="day-invis" id="invis" name="invis" ><%= percentage%>% - on <%=day%></div>
+                <div class="day-invis" id="invis" name="invis" ><%= success %>/<%= total %> (<%=day%>)</div>
               </div>
               <% elsif percentage >= 16.67 && percentage < 33.33 %>
               <div class="calendar-day orange" id="day" name="day">
-                <div class="day-invis" id="invis" name="invis" ><%= percentage%>% - on <%=day%></div>
+                <div class="day-invis" id="invis" name="invis" ><%= success %>/<%= total %> (<%=day%>)</div>
               </div>
               <% elsif percentage >= 33.33 && percentage < 50 %>
               <div class="calendar-day green1" id="day" name="day">
-                <div class="day-invis" id="invis" name="invis" ><%= percentage%>% - on <%=day%></div>
+                <div class="day-invis" id="invis" name="invis" ><%= success %>/<%= total %> (<%=day%>)</div>
               </div>
               <% elsif percentage >= 50 && percentage < 66.67 %>
               <div class="calendar-day green1" id="day" name="day">
-                <div class="day-invis" id="invis" name="invis" ><%= percentage%>% - on <%=day%></div>
+                <div class="day-invis" id="invis" name="invis" ><%= success %>/<%= total %> (<%=day%>)</div>
               </div>
               <% elsif percentage >= 66.67 && percentage < 83.33 %>
               <div class="calendar-day green2" id="day" name="day">
-                <div class="day-invis" id="invis" name="invis" ><%= percentage%>% - on <%=day%></div>
+                <div class="day-invis" id="invis" name="invis" ><%= success %>/<%= total %> (<%=day%>)</div>
               </div>
               <% elsif percentage >= 83.33 && percentage < 100 %>
               <div class="calendar-day green2" id="day" name="day">
-                <div class="day-invis" id="invis" name="invis" ><%= percentage%>% - on <%=day%></div>
+                <div class="day-invis" id="invis" name="invis" ><%= success %>/<%= total %> (<%=day%>)</div>
               </div>
               <% elsif percentage == 100.0 %>
               <div class="calendar-day green3" id="day" name="day">
-                <div class="day-invis" id="invis" name="invis" ><%= percentage%>% - on <%=day%></div>
+                <div class="day-invis" id="invis" name="invis" ><%= success %>/<%= total %> (<%=day%>)</div>
               </div>
               <% end %>
 
