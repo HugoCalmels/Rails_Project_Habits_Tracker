@@ -25,6 +25,19 @@
   <% end %>
   </div>
 
+  <% if @cycle.title == 'daily' || @cycle.title == 'weekly'%>
+<div class="middle-navbar-grid">
+      <% if params[:controller] == 'good_habits' || !@good_habits.nil? %>
+      <%= form_for @cycle, url: user_cycle_reset_path(@user.id, @cycle.title, 'good_habit'), method: 'GET' do |form|%>
+      <%= form.submit 'Simulate',  class: 'navbar-link-2', data: { confirm: 'It will reset your checkpoints' }  %>
+      <% end %>
+      <% elsif params[:controller] == 'bad_habits' || !@bad_habits.nil? %>
+      <%= form_for @cycle, url: user_cycle_reset_path(@user.id, @cycle.title, 'bad_habit'), method: 'GET' do |form|%>
+        <%= form.submit 'Simulate',  class: 'navbar-link-2', data: { confirm: 'It will reset your checkpoints' }  %>
+        <% end %>
+      <% end %>
+    </div>
+<% end %>
 
     <div class="middle-navbar-grid">
     <% if params[:controller] == 'good_habits' || !@good_habits.nil? %>
