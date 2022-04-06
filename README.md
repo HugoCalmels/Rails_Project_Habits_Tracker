@@ -1,6 +1,8 @@
 # Habits Tracker 
 
-## summary
+
+## Libraries
+* Devise, connected to Gmail API for email validation
 
 ### Features
 
@@ -14,11 +16,6 @@
 * There is a sleep/day mode if we want to stop the process, for exemple during hollydays.
 * There is alerts popping for UX experience all along.
 * There is one admin, with a table for each user and his number of checkpoints ( there is not any checkpoint limit atm). The admin can destroy any user from the db.
-
-### Issues
-* Stats are not displayed since last 4 days, can't see what'ive changed to break it.
-
-
 
 ##  to install locally :
 - bundle install
