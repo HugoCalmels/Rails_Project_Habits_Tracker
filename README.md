@@ -1,7 +1,5 @@
 # Habits Tracker
 
-🌐 https://habits-tracker-plus.herokuapp.com/
-
 Premier projet fullstack réalisé en autonomie.  
 Application de suivi d’habitudes avec calendrier, cycles (daily/weekly/monthly) et statistiques.
 
